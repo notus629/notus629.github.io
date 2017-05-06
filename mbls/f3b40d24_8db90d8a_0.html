@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>/*<![CDATA[*/
+
+table{border: 1px solid gray;}
+td{border: 1px dotted gray;}
+p{margin: 3px 0 3px 0; padding: 0;}
+#ID_Footer{font-size: small; font-style: italic; text-align: right; margin-top: 4em; padding-top: 4px; border-top: 2px solid gray;}
+
+/*]]>*/</style><title>SSH密钥认证原理</title></head><body>
+<div><br></div>
+<div style="text-align: center"><span style="font-family: 微软雅黑; font-size: 16pt; line-height: 140%">SSH密钥认证原理</span></div><div style="text-align: center"><span style="font-family: 微软雅黑; font-size: 16pt; line-height: 140%"><br></span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 14pt; line-height: 140%"><b>SSH</b></span></div>
+<div><span style="font-family: 微软雅黑; font-size: 14pt; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 14pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;Secure Shell，即安全外壳协议，由IETF制定，SSH 为建立在应用层基础上的安全协议。SSH 是目前较可靠，专为远程登录会话和其他网络服务提供安全性的协议。</span></div><div><span style="font-family: 微软雅黑; font-size: 14pt; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 14pt; line-height: 140%"><br></span></div>
+<div><span style="font-family: 微软雅黑; font-size: 14pt; font-weight: bold; line-height: 140%">SSH与SSL/TSL</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 14pt; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 14pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;ssh只是加密的shell，最初是用来替代telnet的。通过使用SSH，你可以把所有传输的数据进行加密，还可以为ftp、pop、甚至ppp提供一 个安全的"通道"。</span></div><div><span style="font-family: 微软雅黑; font-size: 14pt; line-height: 140%"><br></span></div>
+<div><span style="font-family: 微软雅黑; font-size: 14pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;SSL在服务器和客户机两端可同时被支持，目前已成为互联网上保密通讯的工业标准。现行的Web浏览器亦普遍将HTTP和SSL相结合，从而实现安全通信。SSL协议的优势在于它是与应用层协议独立无关的。高层的应用层协议（例如：HTTP、FTP、Telnet等等）能透明的建立于SSL协议之上。</span></div><div><span style="font-family: 微软雅黑; font-size: 14pt; line-height: 140%"><br></span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 14pt; font-weight: bold; line-height: 140%">SSH的密钥认证</span></div><div><span style="font-family: 微软雅黑; font-size: 14pt; font-weight: bold; line-height: 140%"><br></span></div>
+<div><span style="font-family: 微软雅黑; font-size: 14pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;其服务器和客户端都各自拥有自己的公钥和密钥。从客户端来看，提供两种级别的认证：</span></div><div><span style="font-family: 微软雅黑; font-size: 14pt; line-height: 140%"><br></span></div>
+<div><span style="font-family: 微软雅黑; font-size: 14pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 14pt; font-weight: bold; line-height: 140%">第一种级别（基于口令的安全验证）</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 14pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;只要你知道自己帐号和口令，就可以登录到远程主机。所有传输的数据都会被加密，但是不能保证你正在连接的服务器就是你想连接的服务器。可能会有别的服务器在冒充真正的服务器，也就是受到"中间人"这种方式的攻击。</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 14pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;登录过程[Ref3] &nbsp; &nbsp; &nbsp; &nbsp;</span></div><div><span style="font-family: 微软雅黑; font-size: 14pt; line-height: 140%"><br></span></div>
+<div><span style="font-family: 微软雅黑; font-size: 14pt; font-weight: bold; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;第二种级别（基于密匙的安全验证）</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 14pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 14pt; line-height: 140%">与第一种级别相比，第二种级别不需要在网络上传送口令，必须为自己创建一对密匙，加密所有传送的数据，可以防范中间人攻击，但登录过程慢。</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 14pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;即使用公钥登录[Ref3,4]</span></div>
+<div><br></div><div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 14pt; font-weight: bold; line-height: 140%">SSH公钥登录（免输入密码）</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 14pt; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 14pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;服务器和客户端都各自拥有自己的公钥和密钥。</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 14pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;原理：用户将自己的公钥储存在远程主机上。登录的时候，远程主机会向用户发送一段随机字符串，用户用自己的私钥加密后，再发回来。远程主机用事先储存的公钥进行解密，如果成功，就证明用户是可信的，直接允许登录shell，不再要求输入密码，这和之前的ssh账号密码也没有直接关系。</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 14pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;分两步[Ref3,5]</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 14pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;会话密钥的生成，以后的传输都用此密钥加密</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 14pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;认证</span></div><div><span style="font-family: 微软雅黑; font-size: 14pt; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 14pt; line-height: 140%"><br></span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 14pt; font-weight: bold; line-height: 140%">OpenSSH</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 14pt; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 14pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;Linux下广泛使用的免费SSH程序</span></div>
+<div><br></div>
+<div><br></div><div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 14pt; line-height: 140%"> &nbsp; &nbsp;[Ref 1] </span><a href="http://www.codeweblog.com/ssh-%E5%92%8C-ssl-tls-%E7%9A%84%E5%BC%82%E5%90%8C/" style="font-family: 微软雅黑; font-size: 14pt; text-decoration: underline; color: #0000ff">SSH 和 SSL/TLS 的异同</a></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; </span><span style="font-family: 微软雅黑; font-size: 14pt; line-height: 140%"> [Ref 2] </span><a href="http://baike.baidu.com/link?url=I6xNQHOraw5dFTv4ijCM1mZeBu75woYvi0otc08E6XvaC4w1LjD2QGk2q3VSyD5TQhqb6KWjeoBzuUSBP23zNtcb8HhqgTh9k-uJ-cir6Fy" style="font-family: 微软雅黑; font-size: 14pt; text-decoration: underline; color: #0000ff">ssh （安全外壳协议）</a></div>
+<div><span style="font-family: 微软雅黑; font-size: 14pt; line-height: 140%"> &nbsp; &nbsp;[Ref 3] ssh密钥认证原理 &nbsp;(</span><a href="http://blog.163.com/heqingchun@126/blog/static/173417873201141762859317/" style="font-family: 微软雅黑; font-size: 14pt; text-decoration: underline; color: #0000ff">外链</a><span style="font-family: 微软雅黑; font-size: 14pt; color: #000000; line-height: 140%">)</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 14pt; line-height: 140%"> &nbsp; &nbsp;[Ref 4] ssh密钥认证原理 (</span><a href="http://www.tuicool.com/articles/qyiyim" style="font-family: 微软雅黑; font-size: 14pt; text-decoration: underline; color: #0000ff">外链</a><span style="font-family: 微软雅黑; font-size: 14pt; color: #000000; line-height: 140%">)</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 14pt; line-height: 140%"> &nbsp; &nbsp;[Ref 5] ssh 公钥私钥认证原理 (</span><a href="http://blog.csdn.net/cnbird2008/article/details/8038926" style="font-family: 微软雅黑; font-size: 14pt; text-decoration: underline; color: #0000ff">外</a><span style="font-family: 微软雅黑; font-size: 14pt; color: #000000; line-height: 140%">)</span></div>
+<div><br></div>
+<div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div><script type="text/javascript" language="javascript" src="jquery.js"></script><script type="text/javascript" language="javascript" src="itemlink.js"></script></body></html>

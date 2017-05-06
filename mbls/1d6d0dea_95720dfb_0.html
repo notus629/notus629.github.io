@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>/*<![CDATA[*/
+
+table{border: 1px solid gray;}
+td{border: 1px dotted gray;}
+p{margin: 3px 0 3px 0; padding: 0;}
+#ID_Footer{font-size: small; font-style: italic; text-align: right; margin-top: 4em; padding-top: 4px; border-top: 2px solid gray;}
+
+/*]]>*/</style><title>环境搭建</title></head><body>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><span style="line-height: 140%; "><font class="Apple-style-span" face="Consolas">安装环境：Window10, MySQL5.7.9, Apache2.2.9， PHP5.2.6-win32</font></span></div>
+<div><span style="line-height: 140%; "><font class="Apple-style-span" face="Consolas">2016-9-9</font></span></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><span style="font-weight: bold; line-height: 140%; "><font class="Apple-style-span" face="Consolas"> &nbsp; &nbsp;安装PHP(参见《PHP和MySQL Web开发》第4版，P708)</font></span></div>
+<div><font class="Apple-style-span" face="Consolas"><span style="line-height: 140%; "><br></span></font></div><div><font class="Apple-style-span" face="Consolas"><span style="line-height: 140%; "> &nbsp; &nbsp; &nbsp; &nbsp;1. 下载PHP及类库文件，得到的为PHP压缩文件及类库文件，此处为"</span><span style="font-weight: bold; line-height: 140%; ">php-5.2.6</span><span style="line-height: 140%; ">-Win32.zip"和"</span><span style="font-weight: bold; line-height: 140%; ">pecl-5.2.6</span><span style="line-height: 140%; ">-Win32.zip".</span></font></div>
+<div><font class="Apple-style-span" face="Consolas"><span style="line-height: 140%; "><br></span></font></div><div><font class="Apple-style-span" face="Consolas"><span style="line-height: 140%; "> &nbsp; &nbsp; &nbsp; &nbsp;2. 解压并保存到选定的PHP安装目录，通常为"</span><span style="font-weight: bold; line-height: 140%; ">c:\php</span><span style="line-height: 140%; ">"。</span></font></div>
+<div><font class="Apple-style-span" face="Consolas"><span style="line-height: 140%; "><br></span></font></div><div><font class="Apple-style-span" face="Consolas"><span style="line-height: 140%; "> &nbsp; &nbsp; &nbsp; &nbsp;3. 将PECL文件解压到扩展目录，即可安装</span><span style="font-weight: bold; line-height: 140%; ">PECL库</span><span style="line-height: 140%; ">，以"C:\PHP"为基目录，则扩展目录为"</span><span style="font-weight: bold; line-height: 140%; ">C:\PHP\ext\</span><span style="line-height: 140%; ">"。</span></font></div>
+<div><span style="line-height: 140%; "><font class="Apple-style-span" face="Consolas"><br></font></span></div><div><span style="line-height: 140%; "><font class="Apple-style-span" face="Consolas"> &nbsp; &nbsp; &nbsp; &nbsp;4. 接下来进行配置。设置php.ini。PHP自带php.ini-dist和php.ini-recommended，学习PHP或在开发服务器上使用PHP时，使用前者，复制该文件并重命名为php.ini。</font></span></div>
+<div><span style="line-height: 140%; "><font class="Apple-style-span" face="Consolas"> &nbsp; &nbsp;在产品服务器上建议使用后一个文件（即php.ini-recommended)。</font></span></div>
+<div><font class="Apple-style-span" face="Consolas"><span style="line-height: 140%; "><br></span></font></div><div><font class="Apple-style-span" face="Consolas"><span style="line-height: 140%; "> &nbsp; &nbsp; &nbsp; &nbsp;5. 将</span><span style="font-weight: bold; color: rgb(255, 0, 0); line-height: 140%; ">extension_dir</span><span style="color: rgb(0, 0, 0); line-height: 140%; ">修改为指向保存扩展DLL目录的位置。即extension_dir="c:/php/ext".</span></font></div>
+<div><font class="Apple-style-span" face="Consolas"><span style="line-height: 140%; "><br></span></font></div><div><font class="Apple-style-span" face="Consolas"><span style="line-height: 140%; "> &nbsp; &nbsp; &nbsp; &nbsp;6. 将</span><span style="font-weight: bold; color: rgb(255, 0, 0); line-height: 140%; ">doc_root</span><span style="color: rgb(0, 0, 0); line-height: 140%; ">指令修改为指向Web服务器的</span><span style="font-weight: bold; color: rgb(0, 0, 0); line-height: 140%; ">根路径</span><span style="color: rgb(0, 0, 0); line-height: 140%; ">，即doc_root="C:/Program Files (x86)/Apache Software Foundation/Apache2.2/htdocs".</span></font></div>
+<div><font class="Apple-style-span" face="Consolas"><span style="line-height: 140%; "><br></span></font></div><div><font class="Apple-style-span" face="Consolas"><span style="line-height: 140%; "> &nbsp; &nbsp; &nbsp; &nbsp;7. 根据需要添加扩展，查看php.ini中，"</span><span style="font-weight: bold; line-height: 140%; ">windows扩展</span><span style="line-height: 140%; ">"项下的列表，删除语句前面的分号即可。此处，使用php_pdflib.dll, php_gd2.dll, php_imap.dll和</span></font></div>
+<div><font class="Apple-style-span" face="Consolas"><span style="line-height: 140%; "> &nbsp; &nbsp;php_mysqli.dll文件，去掉相应的如"</span><span style="font-weight: bold; color: rgb(255, 0, 0); line-height: 140%; ">；extension=php_pdflib.dll</span><span style="color: rgb(0, 0, 0); line-height: 140%; ">"前的分号。</span></font></div>
+<div><font class="Apple-style-span" face="Consolas"><span style="line-height: 140%; "><br></span></font></div><div><font class="Apple-style-span" face="Consolas"><span style="line-height: 140%; "> &nbsp; &nbsp; &nbsp; &nbsp;8. </span><span style="font-weight: bold; line-height: 140%; ">将PHP添加到Apache配置中</span><span style="line-height: 140%; ">。打开</span><span style="font-weight: bold; color: rgb(255, 0, 0); line-height: 140%; ">httpd.conf</span><span style="color: rgb(0, 0, 0); line-height: 140%; ">（即apache配置文件，位于C:\Program Files (x86)\Apache Software Foundation\Apache2.2\conf)，找到（若找不</span></font></div>
+<div><font class="Apple-style-span" face="Consolas"><span style="line-height: 140%; "> &nbsp; &nbsp;到则在文件末尾添加）以下语句行：（</span><span style="font-weight: bold; line-height: 140%; ">注意</span><span style="line-height: 140%; ">：最后的x-httpd-php .php中， php与.php之间有空格），保存后重启Apache服务器。</span></font></div>
+<div><span style="color: rgb(255, 0, 255); line-height: 140%; "><font class="Apple-style-span" face="Consolas"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;LoadModule php5_module c:/php/php5apache2_2.dll</font></span></div>
+<div><span style="line-height: 140%; "><font class="Apple-style-span" face="Consolas"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;PHPIniDir "c:/php/"</font></span></div>
+<div><span style="line-height: 140%; "><font class="Apple-style-span" face="Consolas"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;AddType application/x-httpd-php .php</font></span></div>
+<div><span style="line-height: 140%; "><font class="Apple-style-span" face="Consolas"><br></font></span></div><div><span style="line-height: 140%; "><font class="Apple-style-span" face="Consolas"> &nbsp; &nbsp; &nbsp; &nbsp;9. 测试PHP是否在apache上安装配置成功。创建test.php，其中包含1行语句"&lt;? phpinfo() ?&gt;"。将此文件放入Web服务器文档根目录，即"C:\Program Files (x86)</font></span></div>
+<div><font class="Apple-style-span" face="Consolas"><span style="line-height: 140%; "> &nbsp; &nbsp;\Apache Software Foundation\Apache2.2\htdocs", 在浏览器中输入"</span><a href="http://localhost/test.php" style="text-decoration: underline; color: rgb(0, 0, 255); ">http://localhost/test.php</a><span style="color: rgb(0, 0, 0); line-height: 140%; ">"进行访问。</span></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><span style="font-weight: bold; line-height: 140%; "><font class="Apple-style-span" face="Consolas"> &nbsp; &nbsp;PEAR安装</font></span></div>
+<div><span style="line-height: 140%; "><font class="Apple-style-span" face="Consolas"> &nbsp; &nbsp; &nbsp; &nbsp;1. 命令行下执行C:\php\go-pear(似乎无法正确运行此命令，直接cd c:\php，再执行go-pear即可）</font></span></div>
+<div><span style="line-height: 140%; "><font class="Apple-style-span" face="Consolas"> &nbsp; &nbsp; &nbsp; &nbsp;2. 执行过程中均选项均按默认设置，过程中依据cmd中提示，双击c:\php\PEAR_ENV.reg，将PEAR路径导入注册表。结束。</font></span></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><span style="font-weight: bold; line-height: 140%; "><font class="Apple-style-span" face="Consolas">遇到的问题</font></span></div><div><span style="font-weight: bold; line-height: 140%; "><font class="Apple-style-span" face="Consolas"><br></font></span></div>
+<div><font class="Apple-style-span" face="Consolas"><span style="line-height: 140%; "> &nbsp; &nbsp;</span><span style="font-weight: bold; line-height: 140%; ">问题1</span><span style="line-height: 140%; ">. 安装win10更新后，MySQL服务和Apache服务都无法自动开启，顺带的，VPN连接的参数也被修改。</span></font></div><div><font class="Apple-style-span" face="Consolas"><span style="line-height: 140%; "><br></span></font></div>
+<div><font class="Apple-style-span" face="Consolas"><span style="line-height: 140%; "> &nbsp; &nbsp;</span><span style="font-weight: bold; line-height: 140%; ">解决方案：</span><span style="line-height: 140%; ">目前可想到的方案是禁止更新，但似乎不大好。不知道问题出在哪里。</span></font></div>
+<div><span style="line-height: 140%; "><font class="Apple-style-span" face="Consolas"> &nbsp; &nbsp;对于MySQL，直接重新安装。对于Apache安装后则会出现无法打开套接字，无法启动的错误，解决方法详见Apache条目。</font></span></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><br></div><script type="text/javascript" language="javascript" src="jquery.js"></script><script type="text/javascript" language="javascript" src="itemlink.js"></script></body></html>

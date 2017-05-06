@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>/*<![CDATA[*/
+
+table{border: 1px solid gray;}
+td{border: 1px dotted gray;}
+p{margin: 3px 0 3px 0; padding: 0;}
+#ID_Footer{font-size: small; font-style: italic; text-align: right; margin-top: 4em; padding-top: 4px; border-top: 2px solid gray;}
+
+/*]]>*/</style><title>Bat</title></head><body>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas">(前提：已在 Windows 系统中建立，名为"电信专网"的 VPN 连接)</font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><span style="font-size: 14pt; line-height: 190%; "><b><font class="Apple-style-span" face="Consolas">拔号上网(connect.bat)</font></b></span></div>
+<div><span class="Apple-style-span" style="font-size: 19px; font-weight: bold; line-height: 36px; "><font class="Apple-style-span" face="Consolas"><br></font></span></div><blockquote class="webkit-indent-blockquote" style="margin: 0 0 0 40px; border: none; padding: 0px;"><div><span class="Apple-style-span" style="font-size: 19px; font-weight: bold; line-height: 36px; "><font class="Apple-style-span" face="Consolas"></font><table style="color: rgb(51, 51, 51); font-size: medium; font-style: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; "><tbody><tr><td><pre style="margin: 0px; line-height: 16.25px;"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></td><td><pre style="margin: 0px; line-height: 16.25px;">       @<span style="color: rgb(0, 0, 255);">echo</span> <span style="color: rgb(0, 0, 255);">off</span>
+       <span style="color: rgb(0, 128, 0);">::拔号连接代理</span>
+       rasdial 电信专网VPN 18959265770 633189        
+        
+       <span style="color: rgb(0, 128, 0);">:: 失败（如果errorlevel大于等于1）则暂停，或成功则暂停5秒后退出</span>
+       <span style="color: rgb(0, 0, 255);">if</span> <span style="color: rgb(0, 0, 255);">errorlevel</span> 1 (        
+               <span style="color: rgb(0, 0, 255);">pause</span>
+       )<span style="color: rgb(0, 0, 255);">else</span> (
+               <span style="color: rgb(0, 0, 255);">echo</span>;
+               <span style="color: rgb(0, 0, 255);">echo</span> 5 秒后自动退出！
+               ping 123.45.67.89 -n 1 -w 1000 &gt; nul
+               <span style="color: rgb(0, 0, 255);">echo</span> 4 秒后自动退出！
+               ping 123.45.67.89 -n 1 -w 1000 &gt; nul
+               <span style="color: rgb(0, 0, 255);">echo</span> 3 秒后自动退出！
+               ping 123.45.67.89 -n 1 -w 1000 &gt; nul
+               <span style="color: rgb(0, 0, 255);">echo</span> 2 秒后自动退出！
+               ping 123.45.67.89 -n 1 -w 1000 &gt; nul
+               <span style="color: rgb(0, 0, 255);">echo</span> 1 秒后自动退出！
+               ping 123.45.67.89 -n 1 -w 1000 &gt; nul
+       )</pre></td></tr></tbody></table></span></div></blockquote><div><span class="Apple-style-span" style="font-size: 19px; font-weight: bold; line-height: 36px; "><font class="Apple-style-span" face="Consolas"><br></font></span></div><div><span class="Apple-style-span" style="font-size: 19px; font-weight: bold; line-height: 36px; "><font class="Apple-style-span" face="Consolas"><br></font></span></div><div><span class="Apple-style-span" style="font-size: 19px; font-weight: bold; line-height: 36px; "><font class="Apple-style-span" face="Consolas">断开连接(disconnect.bat)</font></span></div><div><span class="Apple-style-span" style="font-size: 19px; font-weight: bold; line-height: 36px; "><font class="Apple-style-span" face="Consolas"><br></font></span></div><blockquote class="webkit-indent-blockquote" style="margin: 0 0 0 40px; border: none; padding: 0px;"><div><span class="Apple-style-span" style="font-size: 19px; font-weight: bold; line-height: 36px; "><font class="Apple-style-span" face="Consolas"></font><table style="color: rgb(51, 51, 51); font-size: medium; font-style: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; "><tbody><tr><td><pre style="margin: 0px; line-height: 16.25px;"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></td><td><pre style="margin: 0px; line-height: 16.25px;">       @<span style="color: rgb(0, 0, 255);">echo</span> <span style="color: rgb(0, 0, 255);">off</span>
+       rasdial 电信专网VPN /disconnect
+
+       <span style="color: rgb(0, 128, 0);">:: 失败（如果errorlevel大于等于1）则暂停，成功则暂停N秒，</span>
+       <span style="color: rgb(0, 0, 255);">if</span> <span style="color: rgb(0, 0, 255);">errorlevel</span> 1 (        
+               <span style="color: rgb(0, 0, 255);">pause</span>
+       )<span style="color: rgb(0, 0, 255);">else</span> (
+               <span style="color: rgb(0, 0, 255);">echo</span>;
+               <span style="color: rgb(0, 0, 255);">echo</span> 5 秒后自动退出！
+               ping 123.45.67.89 -n 1 -w 1000 &gt; nul
+               <span style="color: rgb(0, 0, 255);">echo</span> 4 秒后自动退出！
+               ping 123.45.67.89 -n 1 -w 1000 &gt; nul
+               <span style="color: rgb(0, 0, 255);">echo</span> 3 秒后自动退出！
+               ping 123.45.67.89 -n 1 -w 1000 &gt; nul
+               <span style="color: rgb(0, 0, 255);">echo</span> 2 秒后自动退出！
+               ping 123.45.67.89 -n 1 -w 1000 &gt; nul
+               <span style="color: rgb(0, 0, 255);">echo</span> 1 秒后自动退出！
+               ping 123.45.67.89 -n 1 -w 1000 &gt; nul
+       )</pre></td></tr></tbody></table></span></div></blockquote>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><br></div><script type="text/javascript" language="javascript" src="jquery.js"></script><script type="text/javascript" language="javascript" src="itemlink.js"></script></body></html>

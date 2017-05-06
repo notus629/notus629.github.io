@@ -1,0 +1,12 @@
+﻿<html><head></head>
+<body><!--StartFragment-->
+
+<p class="MsoNormal" align="center" style="text-align: left;"><b style="mso-bidi-font-weight:normal"><span lang="EN-US"><font class="Apple-style-span" face="Consolas"><br></font></span></b></p><p class="MsoNormal" align="center" style="text-align: left;"><b style="mso-bidi-font-weight:normal"><span lang="EN-US"><font class="Apple-style-span" face="Consolas">No need to answer them in a short time period</font></span></b></p><p class="MsoNormal" align="center" style="text-align: left;"><font class="Apple-style-span" face="Consolas"><b>1. &nbsp;</b>很多函数都有错误返回值，那为空的函数（或系统调用）是不是一定会正确执行呢？又或者确有错误指示的全局变量（如<span lang="EN-US">errno</span>），那是否存在没有任何错误指示且返回为<span lang="EN-US">void</span>的函数<span lang="EN-US">/API</span>，这个时候不需要错误指示吗？还是这种函数永远不会返回错误？再者，很多看起来不会执行错误的函数，怎么会有错误的情况产生？</font></p>
+
+<p class="MsoListParagraph" style="mso-margin-top-alt:auto;mso-margin-bottom-alt:
+auto;margin-left:17.85pt"><font class="Apple-style-span" face="Consolas"><span lang="EN-US">e.g. Linux</span>标准<span lang="EN-US">I/O</span>库里头的，<span lang="EN-US">void
+rewind(FILE *stream); </span>返回为空，并且会把错误指示器清除为<span lang="EN-US">0</span>，这个函数是不会出现错误吗？否则怎么知道他出错了？还是错不错没关系，不再乎？</font><span lang="EN-US"><o:p></o:p></span></p>
+
+<!--EndFragment-->
+
+<script type="text/javascript" language="javascript" src="jquery.js"></script><script type="text/javascript" language="javascript" src="itemlink.js"></script></body></html>

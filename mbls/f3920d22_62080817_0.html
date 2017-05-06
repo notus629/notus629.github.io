@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>/*<![CDATA[*/
+
+table{border: 1px solid gray;}
+td{border: 1px dotted gray;}
+p{margin: 3px 0 3px 0; padding: 0;}
+#ID_Footer{font-size: small; font-style: italic; text-align: right; margin-top: 4em; padding-top: 4px; border-top: 2px solid gray;}
+
+/*]]>*/</style><title>浅谈HTTPS/SSL/TSL</title></head><body>
+<div><br></div>
+<div style="text-align: center"><span style="font-family: 微软雅黑; font-size: 15pt; line-height: 140%">浅谈HTTPS和SSL/TLS协议</span></div>
+<div style="text-align: center"><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%">Leo, 2016-8-29</span></div>
+<div><br></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 12pt; font-weight: bold; line-height: 140%">HTTP协议</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;传输 Web 内容，及Web页面上包含的各种图片、CSS样式、JS脚本等。</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;明文传输</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; </span><span style="font-family: 微软雅黑; font-size: 12pt; font-weight: bold; line-height: 140%"> SSL/TLS协议</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;SSL，即Secure Sockets Layer，安全套接字，网景公司为解决HTTP明文传输的缺点而发明，至1999年已成互联网上的事实标准。</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;TLS，Transport Layer Security，运输层安全协议，IETF对SSL的标准化，二者合并称为SSL/TLS.</span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; </span><span style="font-family: 微软雅黑; font-size: 12pt; font-weight: bold; line-height: 140%"> HTTPS协议</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;即HTTP和SSL/TLS的组合，即HTTP over SSL 或 HTTP over TLS</span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; </span><span style="font-family: 微软雅黑; font-size: 12pt; font-weight: bold; line-height: 140%"> HTTP协议特点</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;a. 版本号：</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; line-height: 140%">HTTP2.0</span><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">，即将发布</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; line-height: 140%"> &nbsp;HTTP1.1</span><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">, 1999年发布，技术文档为RFC2616，是现今所使用的版本。</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;HTTP1.0，早期广泛使用的版本</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;HTTP0.9, 未被广泛使用过</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;b. http对tcp的使用</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; line-height: 140%"> 短连接</span><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">模式：每个资源重新发起TCP连接，如图片、外部CSS和JS文件。</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; line-height: 140%">长连接</span><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">模式（持久连接）：抓取页面后不会立即关闭TCP，用同一个TCP连接抓取此页面的外部资源。</span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; font-weight: bold; line-height: 140%"> &nbsp; &nbsp;HTTPS需求</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;兼容性：兼容HTTP：基于TCP、在HTTP数据外加了一层SSL封装，HTTP协议原有Get、POST机制不变</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;可扩展性：SSL/TLS除了HTTP，还可用于FTP、SMTP、POP、Telnet等</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;保密性：可对抗嗅探，还要对抗重放攻击</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;完整性（防篡改）：如明文HTTP会被ISP在页面中植入广告</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;真实性（防假冒）：看网址也不能确保站点的真实（如域名欺骗和域名劫持）</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;性能：使用对称还是非对称加密、如何兼顾HTTP1.0的短连接TCP方式。</span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 12pt; font-weight: bold; line-height: 140%">SSL/TLS，基于CA证书进行密钥交换</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;1. 首先网站须花钱从某个CA那里购买数字证书，证书里应包含几个文件：一个文件包含公钥、一个文件包含私钥，网站必须在Web服务器上部署这两个文件。</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;2. 浏览器访问该网站时，Web服务器首先把包含公钥的证书发送给浏览器。</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;3. 浏览器验证接收到的证书，若其中有诈，会提示"CA证书安全警告"。正经的CA都来是权威的CA，主流操作系统或浏览器会内置该CA的"根证书"。</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;4. 浏览器发现证书没问题，就提取公钥，自己随机生成一个"对称加密的密钥"（k)，用CA证书的公钥加密k，得到k'，再把k'发送给网站</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;5. 网站收到k'，利用私钥解密，得到k</span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 12pt; font-weight: bold; line-height: 140%">客户端证书</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;服务端证书：确保服务器不是假冒的</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;客户端证书：证明客户端访问者的身份，特殊场合用到（如内网中打开重要服务器的页面）</span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp;SSL/TLS并非100%，有"针对 SSL/TLS 的种种攻击方式"</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 12pt; font-weight: bold; line-height: 140%">[Ref 1]</span><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> 浅谈 HTTPS 和 SSL/TLS 协议的背景与基础 （</span><a href="http://mp.weixin.qq.com/s?__biz=MzAwNjMxMTA5Mw==&amp;mid=2651340243&amp;idx=1&amp;sn=d05d411084c6e7a492d6a641b24a633b&amp;scene=21#wechat_redirect" style="font-family: 微软雅黑; font-size: 12pt; text-decoration: underline; color: #0000ff">外链</a><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%">）</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 12pt; font-weight: bold; line-height: 140%">[Ref 2] </span><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%">浅谈 HTTPS（2）：可靠密钥交换的原理（</span><a href="http://mp.weixin.qq.com/s?__biz=MzAwNjMxMTA5Mw==&amp;mid=2651340246&amp;idx=1&amp;sn=d51c2c6748484915bdf8f5752740580d&amp;scene=0#wechat_redirect" style="font-family: 微软雅黑; font-size: 12pt; text-decoration: underline; color: #0000ff">外链</a><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%">）</span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div><script type="text/javascript" language="javascript" src="jquery.js"></script><script type="text/javascript" language="javascript" src="itemlink.js"></script></body></html>

@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta><style>/*<![CDATA[*/
+
+table{border: 1px solid gray;}
+td{border: 1px dotted gray;}
+p{margin: 3px 0 3px 0; padding: 0;}
+#ID_Footer{font-size: small; font-style: italic; text-align: right; margin-top: 4em; padding-top: 4px; border-top: 2px solid gray;}
+
+/*]]>*/</style><title>vim分屏</title></head><body>
+<div><span style="font-family: 微软雅黑; font-size: 16pt; font-weight: bold; color: #ff0000; line-height: 140%">VIM 分屏</span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; font-weight: bold; color: #ff0000; line-height: 140%">分屏启动Vim</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp;使用大写的O参数来垂直分屏。</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;vim -On file1 file2 ...</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp;使用小写的o参数来水平分屏。</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;vim -on file1 file2 ...</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;注释: n是数字，表示分成几个屏。</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; font-weight: bold; line-height: 140%">关闭分屏 </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp;关闭当前窗口。</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; font-weight: bold; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;Ctrl+W c</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp;关闭当前窗口，如果只剩最后一个了，则退出Vim。</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;Ctrl+W q</span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; font-weight: bold; color: #ff0000; line-height: 140%">分屏</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp;上下分割当前打开的文件。</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; font-weight: bold; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;Ctrl+W s</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp;上下分割，并打开一个新的文件。</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;:sp filename</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp;左右分割当前打开的文件。 </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; font-weight: bold; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;Ctrl+W v</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp;左右分割，并打开一个新的文件。</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;:vsp filename</span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; color: #ff0000; line-height: 140%">移动光标</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp;Vi中的光标键是</span><span style="font-family: 微软雅黑; font-size: 9pt; font-weight: bold; line-height: 190%">h, j, k, l</span><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%">，要在各个屏间切换，只需要先按一下Ctrl+W</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp;把光标移到右边的屏。</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; font-weight: bold; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;Ctrl+W l</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp;把光标移到左边的屏中。</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;Ctrl+W h</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp;把光标移到上边的屏中。</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;Ctrl+W k</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp;把光标移到下边的屏中。</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;Ctrl+W j</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp;把光标移到下一个的屏中。.</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; font-weight: bold; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;Ctrl+W w</span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; color: #ff0000; line-height: 140%">移动分屏</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp;这个功能还是使用了Vim的光标键，只不过都是大写。当然了，如果你的分屏很乱很复杂的话，这个功能可能会出现一些非常奇怪的症状。</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp;向右移动。</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;Ctrl+W L</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp;向左移动 </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;Ctrl+W H</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp;向上移动 </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;Ctrl+W K</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp;向下移动 </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;Ctrl+W J</span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; color: #ff0000; line-height: 140%">屏幕尺寸</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; 下面是改变尺寸的一些操作，主要是高度，对于宽度你可以使用 </span><span style="font-family: 微软雅黑; font-size: 9pt; font-weight: bold; line-height: 190%">Ctrl+W &lt; </span><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%">或是 </span><span style="font-family: 微软雅黑; font-size: 9pt; font-weight: bold; line-height: 190%">&gt;</span><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%">，但这可能需要最新的版本才支持。</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp;让所有的屏都有一样的高度。</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; font-weight: bold; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;Ctrl+W =</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp;增加高度。</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; font-weight: bold; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;Ctrl+W +</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp;减少高度。</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; font-weight: bold; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;Ctrl+W -</span></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div><script type="text/javascript" language="javascript" src="jquery.js"></script><script type="text/javascript" language="javascript" src="itemlink.js"></script></body></html>

@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta><style>/*<![CDATA[*/
+
+table{border: 1px solid gray;}
+td{border: 1px dotted gray;}
+p{margin: 3px 0 3px 0; padding: 0;}
+#ID_Footer{font-size: small; font-style: italic; text-align: right; margin-top: 4em; padding-top: 4px; border-top: 2px solid gray;}
+
+/*]]>*/</style><title>04. ThinkPHP 3.1.2 输出和模型使用 2</title></head><body>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 14pt; font-weight: bold; line-height: 140%">本节课大纲：</span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; font-weight: bold; line-height: 140%">一、ThinkPHP 3 的输出 &nbsp; &nbsp; &nbsp;（重点）</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;a、通过 echo 等PHP原生的输出方式在页面中输出</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;b、通过display方法输出</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;想分配变量可以使用assign方法</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;c、修改左右定界符</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;休要修改配置文件中的配置项</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&apos;TMPL_L_DELIM&apos;=&gt;&apos;&lt;{&apos;, //修改左定界符</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&apos;TMPL_R_DELIM&apos;=&gt;&apos;}&gt;&apos;, //修改右定界符</span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 11pt; font-weight: bold; line-height: 190%">二、ThinkPHP 3 的模型使用 &nbsp;（重点）</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;需要在方法中通过new Model（表名）的形式操作数据库</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$m=new Model(&apos;User&apos;);</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$arr=$m-&gt;select(); </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;&apos;DB_TYPE&apos;=&gt;&apos;mysql&apos;, &nbsp; //设置数据库类型</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;&apos;DB_HOST&apos;=&gt;&apos;localhost&apos;,//设置主机</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;&apos;DB_NAME&apos;=&gt;&apos;thinkphp&apos;,//设置数据库名</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;&apos;DB_USER&apos;=&gt;&apos;root&apos;, &nbsp; &nbsp;//设置用户名</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;&apos;DB_PWD&apos;=&gt;&apos;&apos;, &nbsp; &nbsp; &nbsp; &nbsp;//设置密码</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;&apos;DB_PORT&apos;=&gt;&apos;3306&apos;, &nbsp; //设置端口号</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;&apos;DB_PREFIX&apos;=&gt;&apos;tp_&apos;, &nbsp;//设置表前缀</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;也可以使用DSN方法进行配置</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;&apos;DB_DSN&apos;=&gt;&apos;mysql://root:@localhost:3306/thinkphp&apos;,//使用DSN方式配置数据库信息</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;如果两种方式同时存在，以DSN方式为优先</span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;还有一种简单实用模型的方式</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 9pt; font-weight: bold; color: #ff0000; line-height: 140%">M() </span><span style="font-family: 微软雅黑; font-size: 9pt; color: #000000; line-height: 140%">等效为 </span><span style="font-family: 微软雅黑; font-size: 9pt; color: #ff0000; line-height: 140%">new Model();</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;$m=M(&apos;User&apos;);</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;$arr=$m-&gt;select();</span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;使用模型的实例可以对数据进行操作，操作的工作一般就是对数据库进行</span><span style="font-family: 微软雅黑; font-size: 9pt; font-weight: bold; line-height: 140%"> </span><span style="font-family: 微软雅黑; font-size: 9pt; font-weight: bold; color: #ff0000; line-height: 140%">增删改查 CURD</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; color: #000000; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;增 -C Create $m-&gt;add()</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;删 -D Delete $m-&gt;delete()</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;改 -U Update $m-&gt;save()</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 240%"> &nbsp; &nbsp; &nbsp; &nbsp;查 -R Read &nbsp; $m-&gt;select()</span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; font-weight: bold; line-height: 190%">三、补充 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; （了解）</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;a、模板可以遍历数组</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;&lt;volist name=&apos;data&apos; id=&apos;vo&apos;&gt;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;{$vo.id}&gt;----&lt;{$vo.username}&gt;-----&lt;{$vo.sex}&gt;&lt;br/&gt;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 240%"> &nbsp; &nbsp; &nbsp; &nbsp;&lt;/volist&gt;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;b、我们可以开启调试功能中的</span><span style="font-family: 微软雅黑; font-size: 9pt; font-weight: bold; color: #ff0000; line-height: 190%">page_trace</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;1.开启调试功能</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;define(&apos;APP_DEBUG&apos;,true); &nbsp;//在主入口文件中index.php</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;2.我们需要设置配置文件，开启页面trace</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&apos;</span><span style="font-family: 微软雅黑; font-size: 9pt; font-weight: bold; line-height: 140%">SHOW_PAGE_TRACE&apos;</span><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">=&gt;true</span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">+++++++++++++++++++++++++++++++++++Leo++++++++++++++++++++++++++++++++++++++++++++++</span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">1. 简化数据库的配置</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;&quot;</span><span style="font-family: 微软雅黑; font-size: 9pt; font-weight: bold; color: #ff0000; line-height: 140%">DB_DSN</span><span style="font-family: 微软雅黑; font-size: 9pt; color: #000000; line-height: 140%">&quot; =&gt; &quot;mysql://root:pwd@localhost:3306/thinkphp&quot; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;//使用DSN的方式进行配置，若DSN与前述方式同时存在，以DSN优先</span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">2. 模型的实例</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;$m = </span><span style="font-family: 微软雅黑; font-size: 9pt; font-weight: bold; color: #ff0000; line-height: 140%">M</span><span style="font-family: 微软雅黑; font-size: 9pt; color: #000000; line-height: 140%">(&apos;User&apos;);</span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">3. 把数组分配给前台</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;C中：</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$arr = $m-&gt;select();</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;assign(&apos;data&apos;, $arr);</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;V中，进行数组遍历：</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;volist </span><span style="font-family: 微软雅黑; font-size: 9pt; font-weight: bold; color: #ff0000; line-height: 140%">name</span><span style="font-family: 微软雅黑; font-size: 9pt; color: #000000; line-height: 140%">=&apos;data&apos; </span><span style="font-family: 微软雅黑; font-size: 9pt; font-weight: bold; color: #ff0000; line-height: 140%">id</span><span style="font-family: 微软雅黑; font-size: 9pt; color: #000000; line-height: 140%">=&apos;vo&apos;&gt; &nbsp; &nbsp; &nbsp; &nbsp;&lt;！--双标签--&gt;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;{$vo.id}&gt;------&lt;{$vo.username}&gt;----------&lt;{$vo.sex}&gt;&lt;br/&gt;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/volist&gt;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;!-- vo为数组中每次进行遍历的数组元素 --&gt;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: ????; font-size: 9pt; line-height: 140%">4. page_trace, </span><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">便于开发过程中进行调试</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;显示整个页面程序加载的运行时间</span></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div><script type="text/javascript" language="javascript" src="jquery.js"></script><script type="text/javascript" language="javascript" src="itemlink.js"></script></body></html>

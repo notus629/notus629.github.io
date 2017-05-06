@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta><style>/*<![CDATA[*/
+
+table{border: 1px solid gray;}
+td{border: 1px dotted gray;}
+p{margin: 3px 0 3px 0; padding: 0;}
+#ID_Footer{font-size: small; font-style: italic; text-align: right; margin-top: 4em; padding-top: 4px; border-top: 2px solid gray;}
+
+/*]]>*/</style><title>_配置项汇总</title></head><body>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">&apos;URL_PATHINFO_DEPR&apos;=&gt;&apos;-&apos;,//修改URL的分隔符</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">&apos;</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">TMPL_L_DELIM</span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%">&apos;=&gt;&apos;&lt;{&apos;, //修改左定界符</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">&apos;TMPL_R_DELIM&apos;=&gt;&apos;}&gt;&apos;, //修改右定界符</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">&apos;DB_TYPE&apos;=&gt;&apos;mysql&apos;, &nbsp; //设置数据库类型</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">&apos;DB_HOST&apos;=&gt;&apos;localhost&apos;,//设置主机</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">&apos;DB_NAME&apos;=&gt;&apos;thinkphp&apos;,//设置数据库名</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">&apos;DB_USER&apos;=&gt;&apos;root&apos;, &nbsp; &nbsp;//设置用户名</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">&apos;DB_PWD&apos;=&gt;&apos;&apos;, &nbsp; &nbsp; &nbsp; &nbsp;//设置密码</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">&apos;DB_PORT&apos;=&gt;&apos;3306&apos;, &nbsp; //设置端口号</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">&apos;</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">DB_PREFIX</span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%">&apos;=&gt;&apos;tp_&apos;, &nbsp;//设置表前缀， 没有设置的话，默认会为</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">think_</span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%">，没有前缀的话设置为&apos;&apos;;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">&apos;</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">DB_DSN</span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%">&apos;=&gt;&apos;mysql://root:@localhost:3306/thinkphp&apos;,//使用DSN方式配置数据库信息</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">&apos;</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">SHOW_PAGE_TRACE</span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%">&apos;=&gt;true,//开启页面Trace</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">&apos;TMPL_TEMPLATE_SUFFIX&apos;=&gt;&apos;.html&apos;,//更改模板文件后缀名</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">&apos;TMPL_FILE_DEPR&apos;=&gt;&apos;_&apos;,//修改模板文件目录层次</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">&apos;TMPL_DETECT_THEME&apos;=&gt;true,//自动侦测模板主题</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">&apos;THEME_LIST&apos;=&gt;&apos;your,my&apos;,//支持的模板主题列表</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">&apos;TMPL_PARSE_STRING&apos;=&gt;array( &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; //添加自己的模板变量规则</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;&apos;__CSS__&apos;=&gt;__ROOT__.&apos;/Public/Css&apos;,</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;&apos;__JS__&apos;=&gt;__ROOT__.&apos;/Public/Js&apos;,</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">),</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">&apos;LAYOUT_ON&apos;=&gt;true,//开启模板渲染，默认是false</span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">&apos;</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">URL_CASE_INSENSITIVE</span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%">&apos;=&gt;true,//url不区分大小写 &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">&apos;</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">URL_HTML_SUFFIX</span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%">&apos;=&gt;&apos;html|shtml|xml&apos;,//限制伪静态的后缀</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">&apos;</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">URL_ROUTE_ON</span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%">&apos;=&gt;true, &nbsp; &nbsp; &nbsp; &nbsp;//开启URL路由支持</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">&apos;</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">URL_ROUTE_RULES</span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%">&apos; =&gt; array( &nbsp;),  &nbsp; &nbsp; &nbsp; &nbsp;//定义路由规则</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;&apos;my&apos;=&gt;&apos;Index/index&apos;, &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">静态地址路由</span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%">,</span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;&apos;APP_GROUP_LIST&apos; =&gt; &apos;Home,Admin&apos;, //项目分组设定</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;&apos;DEFAULT_GROUP&apos; &nbsp;=&gt; &apos;Home&apos;, //默认分组</span></div>
+<div><br /></div><script type="text/javascript" language="javascript" src="jquery.js"></script><script type="text/javascript" language="javascript" src="itemlink.js"></script></body></html>

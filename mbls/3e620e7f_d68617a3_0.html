@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>/*<![CDATA[*/
+
+table{border: 1px solid gray;}
+td{border: 1px dotted gray;}
+p{margin: 3px 0 3px 0; padding: 0;}
+#ID_Footer{font-size: small; font-style: italic; text-align: right; margin-top: 4em; padding-top: 4px; border-top: 2px solid gray;}
+
+/*]]>*/</style><title>25. ThinkPHP 3.1.2 分组、页面跳转与ajax</title></head><body>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 14pt; line-height: 140%">本节课大纲：</span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">一、多应用配置技巧</span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">二、使用分组</span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">三、页面跳转</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;success('查询成功',U('User/test'));</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;redirect('User/test','',5,'页面正在跳');</span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">四、Ajax技巧</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;实现Ajax局部刷新</span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;jQuery: Js/jquery.js</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;script src="__PUBLIC__/JS/jquery.js"&gt;&lt;/script&gt;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;script&gt;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">$</span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%">(function(){</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$('button').bind('click', function(){</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$.get('__URL__getAjax', function(jdata){</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if(data.status==1){</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$()</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;alert(jdata.tata);</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;});</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;});</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}）; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/script&gt; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;ajaxReturn('这里是我要的数据', '信息1', 1);</span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">++++++++++++++++++++++++++++++++++++Leo+++++++++++++++++++++++++++++++++</span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; line-height: 140%; "><b>1. 另外新建一个后台入口</b></span></div><div><span style="font-family: 微软雅黑; line-height: 140%; "><b><br></b></span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;admin.php, 设置后台的应用目录</span></div><div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">&nbsp; &nbsp; &nbsp; &nbsp;APP_PATH, APP_NAME</span></div>
+<div><br></div><div><br></div>
+<div><span style="font-family: 微软雅黑; line-height: 140%; "><b>2. 前后台公用配置文件</b></span></div><div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"><br></span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;当前目录：./， 是指主入口文件所在目录</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;项目目录下，新建一个config.php</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;?php</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;return array(</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//公共配置项</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;);</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;?&gt;</span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;前后台配置项文件中：config.php</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;?php</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$arr = include './config.php';</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$arr2 = array(</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//前后台各自的配置项</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;);</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;return <b><font class="Apple-style-span" color="#800000">array_merge</font></b>($arr, $arr2);</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;?&gt;</span></div>
+<div><br></div><div><br></div>
+<div><span style="font-family: 微软雅黑; line-height: 140%; "><b>3. 分组机制，前后台目录合并到一个分组中</b></span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;没有后台文件：admin.php</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;直接叫应用，不分前后台，直接设为APP应用</span></div><div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">&nbsp; &nbsp; &nbsp; &nbsp; 分组 VS 分应用两种方式</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp;配置分组：</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;'APP_GROUP_LIST' =&gt; 'Home,Admin', //项目分组设定</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;'DEFAULT_GROUP' &nbsp;=&gt; 'Home', //默认分组</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">&nbsp; &nbsp; 再进去，分前后台</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;..../Action/Home, IndexAction.class.php</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;..../Action/Admin, IndexAction.class.php &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp;其它，如配置目录，类似的进行区分</span></div>
+<div><br></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; line-height: 140%; "><b>4. 跳转</b></span></div><div><span style="font-family: 微软雅黑; line-height: 140%; "><b><br></b></span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; <b>&nbsp;error函数</b>，失败后跳转到上一页，即历史记录中的上一页面</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;失败的显示页面为dipatch_jump.tpl</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;也可以设置错误跳转对应的模板文件 </span></div><div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"><br></span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;success函数</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;成功后，就跳转到当前页</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;success('', index); &nbsp; &nbsp; &nbsp; &nbsp;//跳转到当前模块下的index方法</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font class="Apple-style-span" color="#ff0000"><b>U( ) 方法</b></font>：生成全路径</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;success('', User/index);</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;或$this-&gt;success('', User:index); //手册有误，不能成功，应为：</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;success('', U('User/index/));</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; line-height: 140%; "><b>5. 重定向</b></span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;redirect('User/test', '', &nbsp;5, '提示信息'）; &nbsp; &nbsp; &nbsp; &nbsp;//停5秒，显示"提示信息"</span></div>
+<div><br></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">2016-11-3，进度：25完，后面AJAX， jQuery, JSON不懂，。。。</span></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div>实践：</div><div>&nbsp; &nbsp; &nbsp; &nbsp; 1. 前后台共用一个配置文件</div>
+<div><br></div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; 2. 分组</div><div><br></div><div>&nbsp; &nbsp; &nbsp; &nbsp; 3. 从数据库读用户名，输出为页面中的表</div><div><br></div><div>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;4. 用户名包含链接，点击之后显示详情<br></div><div><br></div><div>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;5. 成功和失败后的跳转<br></div><div><br></div><div>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;6. 使用ajax来部分刷新<br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div><script type="text/javascript" language="javascript" src="jquery.js"></script><script type="text/javascript" language="javascript" src="itemlink.js"></script></body></html>

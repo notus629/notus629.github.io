@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta><style>/*<![CDATA[*/
+
+table{border: 1px solid gray;}
+td{border: 1px dotted gray;}
+p{margin: 3px 0 3px 0; padding: 0;}
+#ID_Footer{font-size: small; font-style: italic; text-align: right; margin-top: 4em; padding-top: 4px; border-top: 2px solid gray;}
+
+/*]]>*/</style><title>11. ThinkPHP 3.1.2 连贯操作</title></head><body>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%">#</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"># ThinkPHP 3.1.2 连贯操作</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">#</span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 190%">本节课大纲：</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 190%">一、常用连贯操作 &nbsp;（重点）</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 190%">二、补充 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;（了解）</span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">=</span><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">===================================================</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 190%">一、常用连贯操作</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;1.</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">where</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;帮助我们设置查询条件</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;2.</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">order</span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;对结果进行排序</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$arr=$m-&gt;</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; line-height: 140%">order(&apos;id desc&apos;)-</span><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">&gt;select(); &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//直接order(&apos;id&apos;)，默认升序</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$arr=$m-&gt;order(</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">array(&apos;id&apos;=&gt;&apos;desc&apos;,&apos;sex&apos;=&gt;&apos;asc&apos;)</span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%">)-&gt;select();</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//也可以 数组形式：</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;3.</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">limit</span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;限制结果</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;limit(2,5) &nbsp; &nbsp; &nbsp; &nbsp;//从第2条语句开始取出5条</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;limit(</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">&apos;</span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%">2,5</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">&apos;</span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%">)</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;limit(10) //limit(0,10)</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//limit, order, 及后面的连贯操作没有前后顺序，最后一定是具体操作，如select</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;4.</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">field</span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;设置查询字段</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;filed(&apos;username&apos;); &nbsp; &nbsp; &nbsp; &nbsp;//字符串形式，单个字段</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;fileld(&apos;username, id&apos;); &nbsp; &nbsp; &nbsp; &nbsp;//字符串形式，多个字段</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;field(&apos;username as name,id&apos;) &nbsp; &nbsp; &nbsp; &nbsp;//字符串形式，多个字段，改名</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;field(array(&apos;username&apos;, &apos;id&apos;)) &nbsp; &nbsp; &nbsp; &nbsp;//数组形式</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;field(array(&apos;username&apos;=&gt;&apos;name&apos;,&apos;id&apos;) &nbsp; &nbsp; &nbsp; &nbsp;//数组形式，改名</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;field(&apos;id&apos;,</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; line-height: 140%">true</span><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">)  &nbsp; &nbsp; &nbsp; &nbsp;//获取除了id以外的所有字段</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;5.table &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;设置表名，见手册</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;6.group &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 240%"> &nbsp; &nbsp; &nbsp; &nbsp;7.having</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 190%">二、补充 &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;alias 用于给当前数据表定义别名 字符串 </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;page 用于查询分页（内部会转换成limit） 字符串和数字 </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;join* 用于对查询的join支持 字符串和数组 </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;union* 用于对查询的union支持 字符串、数组和对象 </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;distinct 用于查询的distinct支持 布尔值 </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;lock 用于数据库的锁机制 布尔值 </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;cache 用于查询缓存 支持多个参数（以后在缓存部分再详细描述） </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;relation 用于关联查询（需要关联模型扩展支持） 字符串 </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;validate 用于数据自动验证 数组 </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;auto 用于数据自动完成 数组 </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;filter 用于数据过滤 字符串 </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;scope* 用于命名范围 字符串、数组 </span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;补充部分会在以后在详细探讨</span></div>
+<div><br /></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">+++++++++++++++++++++++++++++++++++++++++Leo+++++++++++++++++++++++++++++++</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">$sql=&quot;select * from User&quot;;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">$result = mysql_query($sql);</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">if($result &amp;&amp; mysql_num_rows($result)){</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;while ($res = mysql_fetch_assoc($result)){</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$arr[] = $res;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;}</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">}</span></div>
+<div><br /></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">$m=new Model(</span><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">);</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">$arr=$m-&gt;select();</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">var_dump($arr);</span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">1. $m-&gt;where(&apos;...&apos;)-&gt;select() 原理</span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">2. $this-&gt;show(&apos;abc&apos;);</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;直接显示html代码，通过参数传入，这样不用像display一样要模板了</span></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><br /></div><script type="text/javascript" language="javascript" src="jquery.js"></script><script type="text/javascript" language="javascript" src="itemlink.js"></script></body></html>

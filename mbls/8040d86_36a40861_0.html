@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta><style>/*<![CDATA[*/
+
+table{border: 1px solid gray;}
+td{border: 1px dotted gray;}
+p{margin: 3px 0 3px 0; padding: 0;}
+#ID_Footer{font-size: small; font-style: italic; text-align: right; margin-top: 4em; padding-top: 4px; border-top: 2px solid gray;}
+
+/*]]>*/</style><title>光标移动</title></head><body>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; font-weight: bold; line-height: 190%">hjkl：左下上右</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;上: </span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">k </span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%">nk: 向上移动n行 </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;下: </span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">j</span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%"> nj: 向下移动n行</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;左: </span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">h</span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%"> nh: 向左移动n列</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 240%"> &nbsp; &nbsp; &nbsp; &nbsp;右:</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 240%"> l</span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 240%"> nl: 向右移动n列</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; font-weight: bold; line-height: 190%">移动到开头或结尾，第n行</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;9999k或</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">gg</span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%">可以移到第一行 </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">G</span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%">移到最后一行</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 240%"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 240%">nG</span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 240%">: 移动到第n行</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; font-weight: bold; line-height: 190%">以单词为单位移动</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">w</span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%">: 移动到下一个单词的开始，</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;nw：移动n个单词</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">b</span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%">: 移动到上一个单词的开始</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">e</span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%">: 移动到下一个单词的结尾，若在本单词的非结尾字符上，移动到本单词结尾</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;ne: 移动n个单词</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 240%"> &nbsp; &nbsp; &nbsp; &nbsp;ge: 与e相反</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; font-weight: bold; line-height: 190%">行首行尾</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">$: </span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%">移动光标到行尾</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;n$：移动到下面第n行(以当前行为第1行）的行尾</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">0</span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%">：移动光标到行首</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 240%"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 240%">^</span><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 240%">：</span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 240%">移动光标到行首第一个非空字符上去</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; font-weight: bold; line-height: 190%">翻页：</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;向前翻页：</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">CTRL+f</span><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp;(forw</span><span style="font-family: ????; font-size: 10pt; line-height: 140%">a</span><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">rd)</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 240%"> &nbsp; &nbsp; &nbsp; &nbsp;向后翻页：</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 240%">CTRL+</span><span style="font-family: ????; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 240%">b</span><span style="font-family: ????; font-size: 10pt; font-weight: bold; line-height: 240%"> </span><span style="font-family: ????; font-size: 10pt; line-height: 240%"> (backward)</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">Ctrl + G</span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%">：得到当前光标在文件中的位置 </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">Ref: </span><a href="http://blog.csdn.net/bruce0532/article/details/8312933" style="font-family: 微软雅黑; font-size: 10pt; text-decoration: underline; color: #0000ff">http://blog.csdn.net/bruce0532/article/details/8312933</a></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div><script type="text/javascript" language="javascript" src="jquery.js"></script><script type="text/javascript" language="javascript" src="itemlink.js"></script></body></html>
