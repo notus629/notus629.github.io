@@ -1,0 +1,30 @@
+﻿<html><head></head>
+<body>
+
+<div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><b>1. PHP闭包</b></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas">&nbsp; &nbsp;&nbsp;匿名函数即闭包函数</font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas">&nbsp; &nbsp;&nbsp;子函数可以使用父函数中的局部变量，这种行为就叫做闭包</font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><p>//例一：把匿名函数当做参数传递，并且调用它</p>
+<p>function callFunc( $func ) {</p>
+<p> &nbsp; &nbsp;$func( "some string
+" );</p>
+<p>}</p>
+<p>$printStrFunc = function( $str ) {</p>
+<p> &nbsp; echo $str;</p>
+<p>};</p></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><p>//例二：也可以直接将匿名函数进行传递。如果你了解js，这种写法可能会很熟悉</p>
+<p>callFunc( $printStrFunc );</p>
+<p>callFunc( function( $str ) {</p>
+<p> &nbsp; &nbsp;echo $str;</p>
+<p>} );</p></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><p>//例三 ：连接闭包和外界变量的关键字：USE</p>
+<p>function getMoney() {</p>
+<p> &nbsp; &nbsp;$rmb = 1;</p>
+<p> &nbsp; &nbsp;$dollar = 6;</p>
+<p> &nbsp; &nbsp;$func = function() use ( $rmb ) {</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;echo $rmb;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;echo $dollar;</p>
+<p> &nbsp; &nbsp;};</p>
+<p> &nbsp; &nbsp;$func();</p>
+<p>}</p>
+<p>getMoney();</p>
+<p>//输出：1</p>
+<p>//报错，找不到dorllar变量</p></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><p>用好闭包，可以帮我们</p>
+<p>1 减少foreach的循环的代码</p>
+<p>2 减少函数的参数</p>
+<p>3 解除递归函数&nbsp;</p></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><div><br></div><script type="text/javascript" language="javascript" src="jquery.js"></script><script type="text/javascript" language="javascript" src="itemlink.js"></script></body></html>

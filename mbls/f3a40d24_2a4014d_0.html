@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>/*<![CDATA[*/
+
+table{border: 1px solid gray;}
+td{border: 1px dotted gray;}
+p{margin: 3px 0 3px 0; padding: 0;}
+#ID_Footer{font-size: small; font-style: italic; text-align: right; margin-top: 4em; padding-top: 4px; border-top: 2px solid gray;}
+
+/*]]>*/</style><title>vim</title></head><body>
+<div><span style="font-family: 微软雅黑; font-size: 18pt; font-weight: bold; color: #000000; line-height: 140%">Redefine tab as 4 spaces</span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%">$vim ~/.vimrc</span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; font-weight: bold; line-height: 140%">set tabstop=4 &nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-family: ????; font-size: 12pt; line-height: 140%">" </span><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%">The width of a TAB is set to 4. Still it is a \t. It is just that Vim will interpret it to be having a width of 4.</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; font-weight: bold; line-height: 140%">set softtabstop=4</span><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;" make the tab key (in insert mode) insert a combination of spaces (and possibly tabs) to simulate tab stops at this width.</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; font-weight: bold; line-height: 140%">set expandtab &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%">" Expand TABs to spaces</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; font-weight: bold; line-height: 140%">set shiftwidth=4 &nbsp;</span><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;" Indents will have a width of 4</span></div>
+<div><br></div>
+<div><br></div>
+<div><a href="http://stackoverflow.com/questions/1878974/redefine-tab-as-4-spaces" style="font-family: 微软雅黑; font-size: 12pt; text-decoration: underline; color: #0000ff">http://stackoverflow.com/questions/1878974/redefine-tab-as-4-spaces</a></div>
+<div><br></div>
+<div><br></div>
+<div><a href="https://linux.cn/article-4669-1.html" style="font-family: 微软雅黑; font-size: 9pt; text-decoration: underline; color: #0000ff">https://linux.cn/article-4669-1.html</a></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">一些不起眼但非常有用的 Vim 命令</span></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">按时间回退文件</span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">退回到1分钟前的状态</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">: earlier 1m</span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">相反的转换</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">: later</span></div>
+<div><br></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">保存文件并退出</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">:x</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">:wq</span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">这两个命令实际上并不完全等价，当文件被修改时两个命令时相同的。但如果未被修改，使用 :x 不会更改文件的修改时间，而使用 :wq 会改变文件的修改时间。</span></div>
+<div><br></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">自动补全</span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">Vim 默认有自动补全的功能。的确这个功能是很基本的，并且可以通过插件来增强，但它也很有帮助。方法很简单。Vim 尝试通过已经输入的单词来预测单词的结尾。比如当你在同一个文件中第二次输入 "compiler" 时，仅仅输入 "com" 然后保持在插入模式，按 Ctrl+n 键就可以看到 Vim 为你补全了单词。很简单，但也很有用。</span></div>
+<div><br></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">set nu!</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">syntax enable</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">syntax on</span></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 13pt; font-weight: bold; line-height: 140%">Vim打开utf8编码文件乱码的解决方法 (2015-04-07 21:06:07)</span></div>
+<div><a href="http://blog.sina.com.cn/s/blog_74a7e56e0102vh44.html" style="font-family: 微软雅黑; font-size: 9pt; text-decoration: underline; color: #0000ff">http://blog.sina.com.cn/s/blog_74a7e56e0102vh44.html</a></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">Vim 有四个跟字符编码方式有关的选项: encoding、fileencoding、fileencodings、termencoding.</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">其各自意义如下:</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">encoding: Vim 内部使用的字符编码方式，包括 Vim 的 buffer (缓冲区)、菜单文本、消息文本等。</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">fileencoding: Vim 中当前编辑的文件的字符编码方式，Vim 保存文件时也会将文件保存为这种字符编码方式 (不管是否新文件都如此)。</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">fileencodings: Vim 启动时会按照它所列出的字符编码方式逐一探测即将打开的文件的字符编码方式，并且将 fileencoding 设置为最终探测到的字符编码方式。因此最好将 Unicode 编码方式放到这个列表的最前面，将拉丁语系编码方式 latin1 放到最后面。</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; font-weight: bold; line-height: 140%">termencoding</span><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">: Vim 所工作的终端的字符编码方式。该选项在 Windows 下对我们常用的 GUI 模式的 gVim 无效，而对 Console 模式的 Vim 而言就是 Windows 控制台的代码页，并且通常我们不需要改变它。用英文菜单和提示最好，可以免去下面对菜单和提示信息（B，C部分）的设置如果用英文菜单和提示在安装gvim的时候，将支持本地语言的选项去掉。</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">解决vim文件乱码:</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">(1) 设置文件的编码形式:</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">set encoding=utf-8</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">set termencoding=utf-8</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">set fileencoding=utf-8</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">set fileencodings=ucs-bom,utf-8,chinese</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">(2) Vim菜单乱码:</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">同样在 _vimrc文件里以上的中文设置后加上下列命令，</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">source $VIMRUNTIME/delmenu.vim</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">source $VIMRUNTIME/menu.vim</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">(3) Vim提示信息乱码:</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">language messages zh_CN.utf-8</span></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 16pt; font-weight: bold; line-height: 140%">Remove swap and backup files from your working directory(TBC...)</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 240%">ref: </span><a href="http://vim.wikia.com/wiki/Remove_swap_and_backup_files_from_your_working_directory" style="font-family: 微软雅黑; font-size: 9pt; text-decoration: underline; color: #0000ff">http://vim.wikia.com/wiki/Remove_swap_and_backup_files_from_your_working_directory</a></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; font-weight: bold; padding-left: 20pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;set backupdir=./.backup,.,/tmp</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; padding-left: 20pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;set directory=.,./.backup,/tmp</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;This way, if you want your backups to be neatly grouped, just create a directory called '.backup' in your working directory. Vim will stash backups there. </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;The </span><span style="font-family: 微软雅黑; font-size: 9pt; font-weight: bold; line-height: 190%">'directory' </span><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%">option controls where swap files go. If your working directory is not writable, Vim will put the swap file in one of the specified places.</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%">vim swap file:</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;if your file name is page.inc, &nbsp;then vim auto generated swap file is .page.inc.swap</span></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div><script type="text/javascript" language="javascript" src="jquery.js"></script><script type="text/javascript" language="javascript" src="itemlink.js"></script></body></html>

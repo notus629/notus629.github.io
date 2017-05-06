@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta><style>/*<![CDATA[*/
+
+table{border: 1px solid gray;}
+td{border: 1px dotted gray;}
+p{margin: 3px 0 3px 0; padding: 0;}
+#ID_Footer{font-size: small; font-style: italic; text-align: right; margin-top: 4em; padding-top: 4px; border-top: 2px solid gray;}
+
+/*]]>*/</style><title>07. ThinkPHP 3.1.2 CURD演示 2</title></head><body>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; color: #000000; line-height: 140%">进度：第7课开始</span></div>
+<div><br /></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">ID没有控件，如何传递给模块，利用隐藏域</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;&lt;input type=&quot;hidden&quot; name=&quot;id&quot; value=&quot;&lt;{$data.ID}&gt;&quot; /&gt;</span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">$this-&gt;success(&quot;&quot;);</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;success成功后，默认跳转到上一个页面</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;可以使用$this-&gt;success(&quot;&quot;, &apos;index&apos;), 跳转到index.</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;利用$this-&gt;display(), 默认显示当前方法对应的模板</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$this-&gt;display(&apos;index&apos;), 去转向index模板 &nbsp; &nbsp; &nbsp; &nbsp;//作者演示失败</span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">按钮跳转到添加用户页面：</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;&lt;head&gt;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;script&gt;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;function jump(){</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 9pt; font-weight: bold; color: #ff0000; line-height: 140%">window.location</span><span style="font-family: 微软雅黑; font-size: 9pt; color: #000000; line-height: 140%"> = &quot;/thinkPHP/index.php/User/add&quot;;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/script&gt;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;&lt;/head&gt;</span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;&lt;button </span><span style="font-family: 微软雅黑; font-size: 9pt; color: #ff0000; line-height: 140%">onclick=&quot;jump()&quot;</span><span style="font-family: 微软雅黑; font-size: 9pt; color: #000000; line-height: 140%">&gt; 添加用户&lt;/button&gt;</span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">ThinkPHP中</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;以前action对应的都是一个脚本文件，在thinkPHP中都用一个方法（的路径）来代替</span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">地址：</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;/ThinkPHP/index.php/User/Create 可用__URL__/Create来代替</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;__URL__(双下划线）：除去域名外的，从项目一直到模块的地址</span></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div><script type="text/javascript" language="javascript" src="jquery.js"></script><script type="text/javascript" language="javascript" src="itemlink.js"></script></body></html>

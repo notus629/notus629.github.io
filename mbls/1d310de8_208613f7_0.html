@@ -1,0 +1,535 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta><style>/*<![CDATA[*/
+
+table{border: 1px solid gray;}
+td{border: 1px dotted gray;}
+p{margin: 3px 0 3px 0; padding: 0;}
+#ID_Footer{font-size: small; font-style: italic; text-align: right; margin-top: 4em; padding-top: 4px; border-top: 2px solid gray;}
+
+/*]]>*/</style><title>03. MySQL创建数据表（中）</title></head><body>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; color: #000000; line-height: 140%">&lt;?php</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">/* &nbsp;创建数据表</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;一、什么是数据表</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;二、创建数据表的SQL语句模型</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;DDL</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;CREATE TABLE [IF NOT EXISTS] 表名称(</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;字段名1 列类型 [属性] [索引]</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;字段名2 列类型 [属性] [索引]</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;...</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;字段名n 列类型 [属性] [索引]</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;) [表类型] [表字符集];</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;表名称和字段名 需要我们自己定义名称</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *&lt;?php</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">/* &nbsp;创建数据表</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;一、什么是数据表</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;二、创建数据表的SQL语句模型</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;DDL</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;CREATE TABLE [IF NOT EXISTS] 表名称(</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;字段名1 列类型 [属性] [索引]</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;字段名2 列类型 [属性] [索引]</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;...</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;字段名n 列类型 [属性] [索引]</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;) [表类型] [表字符集];</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;表名称和字段名 需要我们自己定义名称</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;users</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;articles</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;SQL是不区分大小写的， 但是表就是一个文件名， Windows不区分大小写，Linux区分大小写</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;1. 一定要有意义（英文或英文组合和多个单词的缩写）</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;2.自己定的名称最好都小写</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;3. SQL 语句都大写</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;三、数据值和列类型</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;细分都是按空间大小来区分的</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;可以存下就可以</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;1、数值型</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;整型（整数）</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;非常小的整型 &nbsp; &nbsp; 1字节 &nbsp; &nbsp;-128--127 &nbsp; &nbsp; &nbsp;0-- 255（无符号） &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;TINYINT</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;较小的整型 &nbsp; &nbsp; &nbsp; 2字节 &nbsp; &nbsp;-32768--32767 &nbsp;0---65535 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;SMALLINT</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;中等大小的整型 &nbsp; 3字节 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 0---16777215 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MEDIUMINT</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;标准的整数型 &nbsp; &nbsp; 4字节 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -2147483648--- 2147483647 &nbsp; &nbsp;INT</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;大整数型 &nbsp; &nbsp; &nbsp; &nbsp; 8字节 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;BIGINT &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;浮点型（小数）</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;float(M,D) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;4字节</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;double(M,D) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 8字节</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;定点数</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;decimal(M, D) &nbsp; &nbsp; &nbsp; &nbsp;M+2字节 </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;2、字符型</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;mysql&quot; &apos;mysql&apos; &nbsp;\</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; char(m) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;255 &nbsp;固定长度</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; varchar(m) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 255 &nbsp;可变长度</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; char(4) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; varchar(4)</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &apos;&apos; &nbsp; &nbsp; &nbsp; 4 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &apos;&apos; &nbsp; &nbsp; &nbsp; 1字节</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &apos;ab&apos; &nbsp; &nbsp; 4 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &apos;ab&apos; &nbsp; &nbsp; 3字节</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &apos;abcd&apos; &nbsp; 4 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &apos;abcd&apos; &nbsp; 5字节</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &apos;abcdefg&apos;4 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &apos;abcdefg&apos;5字节</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;text &nbsp;文本数据 &nbsp;（文章） &nbsp;2 &nbsp; 16- 1</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;MEDIUMTEXT</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;LONGTEXT </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;blob &nbsp;二进制数据 （相片）</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;MEDIUMBLOB</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;LONGBLOB &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;ENUM &nbsp;枚举 &nbsp;1或2字节</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;ENUM(&quot;one&quot;, &quot;two&quot;, &quot;three&quot;, &quot;four&quot;) &nbsp;--- &nbsp;65535, 一次只能有一个值</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;SET &nbsp; 集合 &nbsp;1，2，3，4，8字节 &nbsp; &nbsp;--- 64 &nbsp; &nbsp; &nbsp; 一次可以用多个集合中的值，中间使用&quot;,&quot;分开</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp;* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;3、日期型</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;DATE &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;YYYY-MM-DD</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;TIME &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;hh:mm:ss</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;DATETIME &nbsp; &nbsp; &nbsp;YYYY-MM-DD hh:mm:ss</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;TIMESTAMP &nbsp; &nbsp; YYYYMMDDhhmmss &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;YEAR &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;YYYY</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;创建表时最好不要使用这些中的时间格式（PHP中时间戳 1970-1-1 0:0:0）是一整数</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;用整数保存时间 &nbsp;time();</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;int</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; font-weight: bold; line-height: 190%">四、数据字段属性</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp;1. </span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">unsigned </span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%">可以让空间增加一倍 &nbsp;-128-127 &nbsp; 0-255</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;只能用在数值型字段</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 240%"> &nbsp; &nbsp; &nbsp; &nbsp;插入负值则会按最小极限0的值插入</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp;2. </span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">zerofill </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">  &nbsp; &nbsp; &nbsp; &nbsp;只能用在数值型字段， 前导0 </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 240%"> &nbsp; &nbsp; &nbsp; &nbsp;该字段自动应用UNSIGNED</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp;3. </span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">AUTO_INCREMENT</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;只能是整数， 数据每增加一条就会自动增1， 字段的值是</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; line-height: 190%">不充许重复（因而通常为唯一索引）</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;NULL，0，留空，值是这3种情况下都会自动加1</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;必须为KEY，如后面加上 </span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">primary key</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 190%">从已经插入过的最大值开始增加，留空的值不会补上</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 240%"> &nbsp; &nbsp; &nbsp; &nbsp;每个表都最好有一个ID字段，设置为自动增涨， auto_increment</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp;4. </span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">NULL </span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%">和</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%"> NOT NULL</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">  &nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; line-height: 140%">默认是空</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%">  &nbsp; &nbsp; &nbsp; &nbsp;是一个值，NULL 值 </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">  &nbsp; &nbsp; &nbsp; &nbsp;将来将这个表的数据转为PHP程序的数据时， 整数列有NULL &nbsp;转成0吗 &nbsp;字符串NULL &nbsp;&apos; &apos; &nbsp;double 0.00 &nbsp; &nbsp; &nbsp; &nbsp;//不确定！！</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;建议： 在创建表时每个字段都不要插入NULL</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;加上限定：</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">not null</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">若值都是not null, 但指定只插入一部分，如下，则会插入0.</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;create table t4(id int not null, name varchar(30) not null, price double not null);</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;insert into t4(name) values(&apos;aaa&apos;);</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;下面则会报错</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;insert into 54 values(null, null, null);</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%"> &nbsp; &nbsp;5. </span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">default</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; padding-left: 20pt; line-height: 190%">缺省值，不插入值的时候的默认值</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; padding-left: 20pt; line-height: 140%">CREATE TABLE users(</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;id INT UNSIGNED NOT NULL AUTO_INCREMENT </span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; line-height: 140%">PRIMARY KEY</span><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">,</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;name VARCHAR(30) NOT NULL DEFAULT &apos;&apos;,</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;height DOUBLE(10,2) NOT NULL DEFAULT 0.00,</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;age INT NOT NULL DEFAULT 0, &nbsp; &nbsp; &nbsp; &nbsp;//一般存出生日期，不存年龄</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;sex CHAR(4) NOT NULL DEFAULT &apos;男&apos;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 240%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;);</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; font-weight: bold; line-height: 190%">五、创建索引</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp;</span><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%"> &nbsp;1. </span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; line-height: 190%">主键索引</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;主要作用是确定数据库表里一条特定数据记录的位置</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%">  &nbsp; &nbsp; &nbsp; &nbsp;最好为每一张数据表定义一个主键</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%">  &nbsp; &nbsp; &nbsp; &nbsp;一个表只能指定一个主键</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 240%">  &nbsp; &nbsp; &nbsp; &nbsp;主键的值不能为空</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%"> &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; line-height: 190%">2. 唯一索引</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;都可以防止创建重复的值</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;每个一表都可以有多个唯一索引</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 240%">  &nbsp; &nbsp; &nbsp; &nbsp;使用关键字：</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 240%">unique</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%"> &nbsp; &nbsp; 3. </span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; line-height: 190%">常规索引</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;最重要的技术</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//提升数据库的性能</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//索引优化</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; line-height: 140%">首先考虑</span><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">常规索引</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;有索引后可以按索引顺序</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">  &nbsp; &nbsp; &nbsp; &nbsp;可以提高查找的速度， 但会</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; line-height: 140%">减慢</span><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">数据列上插入，删除， 修改的速度</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;和表一样是独立的数据对象</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">  &nbsp; &nbsp; &nbsp; &nbsp;可以</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; line-height: 140%">单独使用</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 10pt; color: #ff0000; line-height: 140%">create index i</span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%">nd1 on users(name, age);</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//在users表的 name 和 age上创建名为ind1的索引</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">drop index</span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%"> ind1 on users</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 240%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//删除索引</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">  &nbsp; &nbsp; &nbsp; &nbsp;也可在创建表时创建</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;create table carts(</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;id int not null,</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;uid int not null,</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;sid int not null,</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;number int not null,</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;primary key(id),</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">key </span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%">cuid(uid),</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">index </span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%">csid(sid));</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//index key 是同义词，多列都可以一起或单个分别指定索引</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//如，也可以合在一起 index cid(sid, udi);</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 240%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//删除时分别需1次和2次删除</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%"> &nbsp; &nbsp;4. 全文索引</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;不使用匹配的条件下去搜索单词或短语，将所有单词生成一个清单</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">fulltext</span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%">类型索引，只能在 MyISAM 表类型使用， 只有在varchar char text文本字符串上使用</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">  &nbsp; &nbsp; &nbsp; &nbsp;可以1个或多个数据列使用</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;create table books(</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;id int,</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;bookname varchar(30),</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;price double,</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;detail text not null,</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; line-height: 140%">fulltext</span><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">(detail, bookname),</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;index ind(price),</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;primary key(id) );</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;非全文索引，效率低</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;select * from books where bookname like &quot;%php%&quot;;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;全文索引</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;select bookname, price from books where </span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">MATCH</span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%">(detail) </span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">AGAINST</span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%">(&apos;php&apos;);</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;select match(detail) against(&quot;php&quot;) from books; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 240%"> </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 190%">六、数据表类型及存储位置</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;MySQL和大多数数据库不同，MySQL 有一个存储引擎概念</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;针对不同的存储需求，可以选择最优的存储引擎。</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;存储引擎：也称数据表类型</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;show engines; &nbsp; &nbsp; &nbsp; &nbsp;//查看支持的存储引擎</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;show variables like &apos;table_type&apos;; &nbsp; &nbsp; &nbsp; &nbsp;// 查看默认的存储引擎</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;只学其中的</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 190%">MyISAM </span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 190%">和 </span><span style="font-family: 微软雅黑; font-size: 10pt; color: #ff0000; line-height: 190%">InnoDB</span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 190%">两个</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;创建表的时间指定引擎，不用默认的</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;create table () </span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">type </span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%">InnoDB; &nbsp; &nbsp; &nbsp; &nbsp;//or,</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;create table() </span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 190%">engine </span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 190%">InnoDB;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 240%"> &nbsp; &nbsp; &nbsp; &nbsp;MyISAM表类型是默认的，选择MyISAM还是选择InnoDB</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;在同一个MySQL库中可以（创建表时）指定不同的表类型</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">MyISAM</span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%">表类型</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;配置文件中默认指定此表类型</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;成熟稳定，易于管理</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;采用表格锁定的机制，用来优化多个并发的操作</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;代价，创建完表之后经常要使用</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;OPTIMIZE TABLE 来恢复更新机制所浪费的空间</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;即增删改查出现碎片，进行整理</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;强调快速读取操作</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;缺点：有一些功能不支持，如不支持外键。（较少使用外键了）</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;如果两个表类型都支持相同的功能，可以选择此表类型</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">InnoDB </span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%">表类型</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;可以看成上MyISAM表类型的更新换代的产品</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;提供事务处理的：提交、回滚、崩溃恢复等</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;支持外键的机制</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;若需更高的安全性，很多用户同时修改数据表，考虑InnoDB</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;空间占用量比MyISAM大的多，读写操作速度比MyISAM慢</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;也不支持全文索引等</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;比较：</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;功能 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;MyISAM &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;InnoDB</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;--------------------------------------------------------------------------------</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;事务处理 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;不支持 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;支持</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;数据行锁定 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;不支持 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;支持</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;外键约束 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;不支持 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;支持 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;表空间占用 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;相对小 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;相对大，最大2倍</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;全文索引 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;支持 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;不支持</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;MySQL表存储</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;每一个表都以文件的形式存储在磁盘上</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;MyISAM:</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;每个表至少有一个存储表结构的文件: *.frm</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;存储内容，数据:MYD</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;存储索引的MYI</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;InnoDB: 只有 frm类型文件 &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 190%">七、MySQL默认字符集</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;ACSII</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;ISO-8859-1 或称 Latin1：西欧字符集，经常用来转码用</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;GB2312-80 &nbsp; &nbsp; &nbsp; &nbsp;不推荐用</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;GB13000 &nbsp; &nbsp; &nbsp; &nbsp;很少支持，不推荐使用</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;GBK , 95年左右，GB2312上的扩充，双字节 &nbsp; &nbsp; &nbsp; &nbsp;可以用，不太推荐</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;GB18030, 2000年 两个或4个字节，数据库支持比较少见</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;UTF-32 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;4字节，很少采用</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;USC-2 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;2字节，win2000使用</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;UTF-16 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;2字节或4字节，java, windows XP, NT等</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;UTF-8 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;1--4字节编码，互联网，Unix系，MySQL服务器，强烈推荐</span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;GBK 一个汉字2字节，UTF-8一个汉字3字节</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;name varchar(12) &nbsp; &nbsp; &nbsp; &nbsp;6个汉字 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;GBK</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;name varchar(12) &nbsp; &nbsp; &nbsp; &nbsp;4个汉字 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;UTF-8</span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;MySQL</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;在同一个数据库、同一个表、在同一个表的不同字段都可以指定不同的字符集</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;show character set; &nbsp; &nbsp; &nbsp; &nbsp;//显示支持的字符集</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;MySQL中的UTF-8：</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">utf8 &nbsp;</span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%">//没有杠</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;desc information_schema.character_sets; &nbsp; &nbsp; &nbsp; &nbsp;//显示所有字符集和该字符集的校对字符集</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;MySQL的字符集包括：</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;字符集：定义MySQL存储字符串的方式 36</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;校对规则：是对规则定义了比较字符串的方式 70</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;1对多的关系：1个字符集可以对应多个校对规则</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;show cllation like &apos;gbk%&apos;; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//gbk对应的校对规则，命名如如gbk_chinese_ci, 字符集名_国家名 </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//ci表示比较时不区分大小写 &nbsp;cs区分大小写 &nbsp;bin二进制比较（大小写敏感，默认字符编码比较）</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//my.ini 字符集设置</span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%">八、修改表</span></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">==============================================Leo===================================================</span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">整数：int(5)，不能限制5位，但是小于5位，后面有zerofill, 会加入前导0</span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">主键：</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;id int not null auto_increment primary,  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//指定方式1</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;primary key(id) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;//指定方式2</span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">唯一索引：</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;主要为了防止数据重复而非加快速度</span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">索引：</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;有索引的表，是一个排序了的表，可以通过索引快速定位到记录</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 240%"> &nbsp; &nbsp; &nbsp; &nbsp;不同表类型索引不一样</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">常规索引的缺点：</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;多占用磁盘空间</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;其它缺点</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;不要在每个表上创建索引</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 240%"> &nbsp; &nbsp; &nbsp; &nbsp;可以把表分开：创建索引的放在一个表，不创建索引的放在另外一个表，两个表再通过某个字段关联起来</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">什么字段上创建常规索引： &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;需要作为条件排序/搜索/分组的，这样的数据列上，如</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;where, order by , group by列上，最适合</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;会消耗系统资源，应适可而止</span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">创建表的优化：</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;即在创建索引上</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;其余优化在增删改查上</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">网易云资料不完整，参考优酷视频：</span><a href="http://v.youku.com/v_show/id_XMjMwMzU4NzQ4.html" style="font-family: 微软雅黑; font-size: 10pt; text-decoration: underline; color: #0000ff">http://v.youku.com/v_show/id_XMjMwMzU4NzQ4.html</a></div>
+<div><br /></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">进度：47分</span></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;users</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;articles</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;SQL是不区分大小写的， 但是表就是一个文件名， Windows不区分大小写，Linux区分大小写</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;1. 一定要有意义（英文或英文组合和多个单词的缩写）</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;2.自己定的名称最好都小写</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;3. SQL 语句都大写</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;三、数据值和列类型</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;细分都是按空间大小来区分的</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;可以存下就可以</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;1、数值型</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;整型（整数）</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;非常小的整型 &nbsp; &nbsp; 1字节 &nbsp; &nbsp;-128--127 &nbsp; &nbsp; &nbsp;0-- 255（无符号） &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;TINYINT</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;较小的整型 &nbsp; &nbsp; &nbsp; 2字节 &nbsp; &nbsp;-32768--32767 &nbsp;0---65535 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;SMALLINT</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;中等大小的整型 &nbsp; 3字节 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 0---16777215 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MEDIUMINT</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;标准的整数型 &nbsp; &nbsp; 4字节 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -2147483648--- 2147483647 &nbsp; &nbsp;INT</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;大整数型 &nbsp; &nbsp; &nbsp; &nbsp; 8字节 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;BIGINT &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;浮点型（小数）</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;float(M,D) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;4字节</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;double(M,D) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 8字节</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;定点数</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;decimal(M, D) &nbsp; &nbsp; &nbsp; &nbsp;M+2字节 </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;2、字符型</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;mysql&quot; &apos;mysql&apos; &nbsp;\</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; char(m) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;255 &nbsp;固定长度</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; varchar(m) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 255 &nbsp;可变长度</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; char(4) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; varchar(4)</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &apos;&apos; &nbsp; &nbsp; &nbsp; 4 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &apos;&apos; &nbsp; &nbsp; &nbsp; 1字节</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &apos;ab&apos; &nbsp; &nbsp; 4 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &apos;ab&apos; &nbsp; &nbsp; 3字节</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &apos;abcd&apos; &nbsp; 4 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &apos;abcd&apos; &nbsp; 5字节</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &apos;abcdefg&apos;4 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &apos;abcdefg&apos;5字节</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;text &nbsp;文本数据 &nbsp;（文章） &nbsp;2 &nbsp; 16- 1</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;MEDIUMTEXT</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;LONGTEXT </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;blob &nbsp;二进制数据 （相片）</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;MEDIUMBLOB</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;LONGBLOB &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;ENUM &nbsp;枚举 &nbsp;1或2字节</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;ENUM(&quot;one&quot;, &quot;two&quot;, &quot;three&quot;, &quot;four&quot;) &nbsp;--- &nbsp;65535, 一次只能有一个值</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;SET &nbsp; 集合 &nbsp;1，2，3，4，8字节 &nbsp; &nbsp;--- 64 &nbsp; &nbsp; &nbsp; 一次可以用多个集合中的值，中间使用&quot;,&quot;分开</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp;* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;3、日期型</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;DATE &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;YYYY-MM-DD</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;TIME &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;hh:mm:ss</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;DATETIME &nbsp; &nbsp; &nbsp;YYYY-MM-DD hh:mm:ss</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;TIMESTAMP &nbsp; &nbsp; YYYYMMDDhhmmss &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;YEAR &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;YYYY</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;创建表时最好不要使用这些中的时间格式（PHP中时间戳 1970-1-1 0:0:0）是一整数</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;用整数保存时间 &nbsp;time();</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;int</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; font-weight: bold; line-height: 190%">四、数据字段属性</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp;1. </span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">unsigned </span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%">可以让空间增加一倍 &nbsp;-128-127 &nbsp; 0-255</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;只能用在数值型字段</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 240%"> &nbsp; &nbsp; &nbsp; &nbsp;插入负值则会按最小极限0的值插入</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp;2. </span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">zerofill </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">  &nbsp; &nbsp; &nbsp; &nbsp;只能用在数值型字段， 前导0 </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 240%"> &nbsp; &nbsp; &nbsp; &nbsp;该字段自动应用UNSIGNED</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp;3. </span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">AUTO_INCREMENT</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;只能是整数， 数据每增加一条就会自动增1， 字段的值是</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; line-height: 190%">不充许重复（因而通常为唯一索引）</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;NULL，0，留空，值是这3种情况下都会自动加1</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;必须为KEY，如后面加上 </span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">primary key</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 190%">从已经插入过的最大值开始增加，留空的值不会补上</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 240%"> &nbsp; &nbsp; &nbsp; &nbsp;每个表都最好有一个ID字段，设置为自动增涨， auto_increment</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp;4. </span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">NULL </span><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%">和</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%"> NOT NULL</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">  &nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; line-height: 140%">默认是空</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%">  &nbsp; &nbsp; &nbsp; &nbsp;是一个值，NULL 值 </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">  &nbsp; &nbsp; &nbsp; &nbsp;将来将这个表的数据转为PHP程序的数据时， 整数列有NULL &nbsp;转成0吗 &nbsp;字符串NULL &nbsp;&apos; &apos; &nbsp;double 0.00 &nbsp; &nbsp; &nbsp; &nbsp;//不确定！！</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;建议： 在创建表时每个字段都不要插入NULL</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;加上限定：</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">not null</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">若值都是not null, 但指定只插入一部分，如下，则会插入0.</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;create table t4(id int not null, name varchar(30) not null, price double not null);</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;insert into t4(name) values(&apos;aaa&apos;);</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;下面则会报错</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;insert into 54 values(null, null, null);</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; color: #000000; line-height: 140%"> &nbsp; &nbsp;5. </span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 140%">default</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; padding-left: 20pt; line-height: 190%">缺省值，不插入值的时候的默认值</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; padding-left: 20pt; line-height: 140%">CREATE TABLE users(</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;id INT UNSIGNED NOT NULL AUTO_INCREMENT </span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; line-height: 140%">PRIMARY KEY</span><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">,</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;name VARCHAR(30) NOT NULL DEFAULT &apos;&apos;,</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;height DOUBLE(10,2) NOT NULL DEFAULT 0.00,</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;age INT NOT NULL DEFAULT 0, &nbsp; &nbsp; &nbsp; &nbsp;//一般存出生日期，不存年龄</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;sex CHAR(4) NOT NULL DEFAULT &apos;男&apos;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 240%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;);</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; font-weight: bold; line-height: 190%">五、创建索引</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp;</span><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%"> &nbsp;1. </span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; line-height: 190%">主键索引</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;主要作用是确定数据库表里一条特定数据记录的位置</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%">  &nbsp; &nbsp; &nbsp; &nbsp;最好为每一张数据表定义一个主键</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%">  &nbsp; &nbsp; &nbsp; &nbsp;一个表只能指定一个主键</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 240%">  &nbsp; &nbsp; &nbsp; &nbsp;主键的值不能为空</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%"> &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; line-height: 190%">2. 唯一索引</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;都可以防止创建重复的值</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;每个一表都可以有多个唯一索引</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 240%">  &nbsp; &nbsp; &nbsp; &nbsp;使用关键字：</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; color: #ff0000; line-height: 240%">unique</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%"> &nbsp; &nbsp; 3. </span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; line-height: 190%">常规索引</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;最重要的技术</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//提升数据库的性能</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//索引优化</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; line-height: 140%">首先考虑</span><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">常规索引</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 190%">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;有索引后可以按索引顺序</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">  &nbsp; &nbsp; &nbsp; &nbsp;可以提高查找的速度， 但会</span><span style="font-family: 微软雅黑; font-size: 10pt; font-weight: bold; line-height: 140%">减慢</span><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">数据列上插入，删除， 修改的速度</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;和表一样是独立的数据对象</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;可以单独使用</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;也可在创建表时创建</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;index key 是同义词</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;多列都可以，</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;4. 全文索引</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;fulltext类型索引， MyISAM 表类型使用， 只有在varchar char text文本字符串上使用</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;也可以多个数据列使用</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;六、数据表类型及存储位置</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;七、MySQL默认字符集</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> * &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;八、修改表</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> *</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> */</span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">==============================================Leo===================================================</span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">整数：int(5)，不能限制5位，但是小于5位，后面有zerofill, 会加入前导0</span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">主键：</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;id int not null auto_increment primary,  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//指定方式1</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;primary key(id) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;//指定方式2</span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">唯一索引：</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;主要为了防止数据重复而非加快速度</span></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">索引：</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;有索引的表，是一个排序了的表，可以通过索引快速定位到记录</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 240%"> &nbsp; &nbsp; &nbsp; &nbsp;不同表类型索引不一样</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">常规索引的缺点：</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;多占用磁盘空间</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;其它缺点</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;不要在每个表上创建索引</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 240%"> &nbsp; &nbsp; &nbsp; &nbsp;可以把表分开：创建索引的放在一个表，不创建索引的放在另外一个表，两个表再通过某个字段关联起来</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">什么字段上创建常规索引： &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;需要条件排序/搜索/分组的，这样的数据列上，如</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;where, order by , group by列上，最适合</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;会消耗系统资源，应适可而止</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 10pt; line-height: 140%">进度：网易云资料不完整，未完待续</span></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">2016-10-15：HQU 14日更新未合并到这里</span></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div>
+<div><br /></div><script type="text/javascript" language="javascript" src="jquery.js"></script><script type="text/javascript" language="javascript" src="itemlink.js"></script></body></html>

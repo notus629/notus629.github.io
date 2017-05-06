@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>/*<![CDATA[*/
+
+table{border: 1px solid gray;}
+td{border: 1px dotted gray;}
+p{margin: 3px 0 3px 0; padding: 0;}
+#ID_Footer{font-size: small; font-style: italic; text-align: right; margin-top: 4em; padding-top: 4px; border-top: 2px solid gray;}
+
+/*]]>*/</style><title>经常出现的Thumbs.db</title></head><body>
+<div><span style="font-family: 微软雅黑; color: rgb(0, 0, 0); line-height: 140%; ">Thumbs.db是什么？</span></div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<a href="http://zhidao.baidu.com/link?url=5oH9BntN4Ib7gYCmWRPGKfnrIR7YbkAbSLNwmOt98zkeDk3X_AXweq3joGYdEvlEE1-DJtiyDaQLy05FOH30ma" style="font-family: 微软雅黑; text-decoration: underline; color: rgb(0, 0, 255); ">http://zhidao.baidu.com/link?url=5oH9BntN4Ib7gYCmWRPGKfnrIR7YbkAbSLNwmOt98zkeDk3X_AXweq3joGYdEvlEE1-DJtiyDaQLy05FOH30ma</a><br></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; line-height: 140%; ">&nbsp; &nbsp; &nbsp; 是查看缩略图所产生的缓存文件，正常的现象，不是病毒，要它不出现可以：控制面板--文件夹选项--查看?，在高级设置中将"不缓存缩略图"选项选择上 </span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; line-height: 140%; ">&nbsp; &nbsp; &nbsp; 还有就是可以：打开开始菜单的运行窗口，输入gpedit.msc ，打开组策略配置， 用户配置--管理模板--Windows组件--Windows资源管理器 ，在右侧的窗口中找到并双击打开关闭缩略图缓存这个策略。 </span></div>
+<div><br></div>
+<div><a href="http://bbs.cpcw.com/archiver/?tid-326288.html" style="font-family: 微软雅黑; text-decoration: underline; color: rgb(0, 0, 255); ">http://bbs.cpcw.com/archiver/?tid-326288.html</a><span style="font-family: 微软雅黑; line-height: 140%; "> </span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; line-height: 140%; ">Thumbs.db是 Windows XP/2003 为了提高文件夹在缩略图查看方式下的响应速度而对当前文件夹下的图像文件建立的缓存，这个文件本身并无大碍，因为本身是"系统文件+隐藏文件"，平常是不显示的（除非你电脑的查看里设置了）。但有时却挺麻烦的，甚至能给 Web 站点带来一定的安全风险。 </span></div>
+<div><span style="font-family: 微软雅黑; line-height: 140%; ">比如当你上传电脑的数码相片，在查看时，删除了其中的一张"SSA2501"，再将其后的"SSA2502"改成了"SSA2501"，看，"SSA2502"的照片立刻换成了"SSA2501"的照片，不只是名字换了，照片也变了。如果再将"SSA2503"的名字重命名成"SSA2502"，奇迹发生了，原来的"SSA2502"照片又回来了，"SSA2503"的照片不见了！ </span></div>
+<div><span style="font-family: 微软雅黑; line-height: 140%; ">是中毒了吗？不是的！！原来Windows XP为了能更快地显示图片，会自动将文件夹中的图片缩略图保存为索引文件"Thumbs.db"。我们将没用的图片删除后，由于"Thumbs.db"不能立即自动更新，当出现新文件与原文件名称相同时，便直接将原缩略图取了出来，其实图片本身并没变，改变的只是图片的缩略图。但这样就对用户造成了误导！ </span></div>
+<div><span style="font-family: 微软雅黑; line-height: 140%; ">更严重的后果是如果一位 Web 站点创作者在 Windows 文件夹选项中设置显示系统文件和隐藏文件，他在制作网站的过程中制作或搜集了大量图片到某一目录，并以缩略图的方式预览过此目录，然后他在上传整个目录或所有文件到服务器的时候，就无意中把这个 Thumbs.db 也给传了上去，因为有工具可以查看 Thumbs.db 的内容，甚至导出其中的图像，这样一来，就开启了此目录的浏览权限。用户可以通过 Thumbs.db 得到此文件夹中的所有文件名及缩略内容，然后可以使用Thumbs.db 浏览器下载此目录下的所有图像文件并浏览，最坏的情况是让别人发现这缩略图中还有不健康内容 ... </span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; line-height: 140%; ">禁用方法是：打开"我的文档"，选择"工具→文件夹选项→查看"，选中"不缓存缩略图"选项前的复选框，即可禁止Windows XP使用Thumbs.db文件缓存缩略图。（如下图所示）。 </span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; line-height: 140%; ">删除方法是：利用搜索功能把所有Thumbs.db文件找出来并删除。或者生成一个.bat文件，运行之后，一切问题都将迎刃而解。 </span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; line-height: 140%; ">生成.bat文件方法如下：新建一个文本文档，并将其另存为DelThumbs.bat文件即可。 </span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; line-height: 140%; ">FOR %%I IN (C：D：E：F：G：H：I：) DO (%%I cd\\ attrib -s -h -r Thumbs.db /s /d &gt;nul del Thumbs.db /s) </span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; line-height: 140%; ">保存完毕直接运行即可将硬盘中的所有Thumdb文件全部删除！</span></div>
+<div><br></div><script type="text/javascript" language="javascript" src="jquery.js"></script><script type="text/javascript" language="javascript" src="itemlink.js"></script></body></html>

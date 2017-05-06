@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>/*<![CDATA[*/
+
+table{border: 1px solid gray;}
+td{border: 1px dotted gray;}
+p{margin: 3px 0 3px 0; padding: 0;}
+#ID_Footer{font-size: small; font-style: italic; text-align: right; margin-top: 4em; padding-top: 4px; border-top: 2px solid gray;}
+
+/*]]>*/</style><title>01. MySQL数据库管理系统概述</title></head><body>
+<div><br></div><div>Outline:</div><div>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</div><div><br></div><div><br></div><div>----------------------------------------------------------------------------------------------------------</div>
+<div><span style="font-family: 微软雅黑; line-height: 140%; "><br></span></div><div><span style="font-family: 微软雅黑; line-height: 140%; ">了解MySQL数据库管理系统，内容如下：</span></div>
+<div><br></div>
+<div><font class="Apple-style-span" size="4"><span style="font-family: 微软雅黑; line-height: 190%; "> </span><span style="font-family: 微软雅黑; font-weight: bold; line-height: 190%; ">一、基于数据库的PHP项目</span></font></div>
+<div><span style="font-family: 微软雅黑; line-height: 190%; "><br></span></div><div><span style="font-family: 微软雅黑; line-height: 190%; ">  &nbsp; &nbsp; &nbsp; &nbsp;目前动态网站都是基于数据库，将网站内容使用数据库管理系统去管理</span></div>
+<div><span style="font-family: 微软雅黑; line-height: 190%; ">  &nbsp; &nbsp; &nbsp; &nbsp;用户， 栏目， 图片， 文章， 评论都存储在数据库中</span></div>
+<div><span style="font-family: 微软雅黑; line-height: 140%; ">  &nbsp; &nbsp; &nbsp; &nbsp;如XSCMS库，包含各种表：</span></div>
+<div><span style="font-family: 微软雅黑; line-height: 140%; ">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;users</span></div>
+<div><span style="font-family: 微软雅黑; line-height: 140%; ">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;clumn</span></div>
+<div><span style="font-family: 微软雅黑; line-height: 140%; ">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;pic</span></div>
+<div><span style="font-family: 微软雅黑; line-height: 140%; ">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;articles</span></div>
+<div><span style="font-family: 微软雅黑; line-height: 240%; ">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;commtents</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; font-weight: bold; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; font-weight: bold; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-weight: bold; line-height: 140%; "><font class="Apple-style-span" size="4">二、为什么要选择使用MySQL（概述）</font></span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; line-height: 140%; ">  &nbsp; &nbsp; &nbsp; &nbsp;Oracle DB2 SQL Server ..... </span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; line-height: 140%; ">  &nbsp; &nbsp; &nbsp; &nbsp;PHP中要选择使用MySQL</span></div>
+<div><span style="font-family: 微软雅黑; line-height: 140%; "> </span></div>
+<div><span style="font-family: 微软雅黑; line-height: 240%; ">&nbsp; &nbsp; &nbsp; &nbsp;PHP+MySQL 黄金搭档</span></div><div><span style="font-family: 微软雅黑; line-height: 240%; "><br></span></div>
+<div><font class="Apple-style-span" size="4"><b><span style="font-family: 微软雅黑; line-height: 190%; "> </span><span style="font-family: 微软雅黑; line-height: 190%; ">三、MySQL的架构</span></b></font></div>
+<div><span class="Apple-style-span" style="font-family: 微软雅黑; line-height: 30px; ">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; c/s &nbsp;client/ server (默认端口<b>3306</b>)</span><br></div>
+<div><span style="font-family: 微软雅黑; line-height: 190%; "> &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; MySQL DBMS </span></div>
+<div><span style="font-family: 微软雅黑; line-height: 190%; "> &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; 客户端 &nbsp; &nbsp; 服务器 -- 数据库---数据表--（行/记录， 列/字段）</span></div>
+<div><br></div><div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; font-weight: bold; line-height: 190%">四、PHP程序员主要学习那些数据库的操作</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%">  &nbsp; &nbsp; &nbsp; &nbsp;DBA</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%">  &nbsp; &nbsp; &nbsp; &nbsp;程序员</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;一、为你的项目设计表</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;二、使用SQL语句 （SQL编程）</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;其它如，用户管理、权限分配等，都可以使用工具完成</span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; font-weight: bold; line-height: 190%">五、MySQL的安装和启动过程</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;Linux安装</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;Window安装</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%">  &nbsp; &nbsp; &nbsp; &nbsp;和PHP整合</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 240%"> &nbsp; &nbsp; &nbsp; &nbsp;见细说PHP教材和配套视频</span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; font-weight: bold; line-height: 190%">六、MySQL的目录结构</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%">  &nbsp; &nbsp; &nbsp; &nbsp;配置文件：my.ini &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;改变端口、字符集、目录等</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;启动时加载配置文件，改完后得重启</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;相关命令目录 bin/ &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;MySQL的数据库目录：data/</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;每一个库就是一个目录</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;目录中包含表</span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; font-weight: bold; line-height: 190%">七、了解数据库的SQL语句操作</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;SQL (Structured Query Language)</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;DDL </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 9pt; font-weight: bold; line-height: 140%">create database</span><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> 库名 &nbsp; &nbsp; &nbsp; &nbsp;//创建库</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;create table [库名.]表名 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//创建表 使用了use 库名，则可省略表名</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;drop database 库名 &nbsp; &nbsp; &nbsp; &nbsp;//删除库</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;drop table 表名 &nbsp; &nbsp; &nbsp; &nbsp;//删除表</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;DML</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;insert into users(id, name) values('1', 'zhangsan'); &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//插入</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;update users set name='aa', age='10' where id='1'; &nbsp; &nbsp; &nbsp; &nbsp;//更新</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;delete from 表名 where id='2'; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//删除</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;DQL &nbsp; &nbsp; &nbsp; &nbsp;数据查询语言</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;select * from 表名; &nbsp; &nbsp; &nbsp; &nbsp;//查询</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;DCL &nbsp; &nbsp; &nbsp; &nbsp;数据控制语句，管理数据库的语言，包含管理权限及数据的更改，用工具去执行</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; \s看状态</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;show databases 看所有库</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;show tables 看所有表</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;desc 看表结构</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%">  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;show variables 看配置文件中的变量和值</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; font-weight: bold; line-height: 190%"> 使用数据库步骤</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%">  &nbsp; &nbsp; &nbsp; &nbsp;1. 执行SQL语句，连接到数据库服务器</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> </span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;2. 创建数据库xsphpdb</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;create database xsphpdb;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;删除:drop database xsphpdb;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;在data\下建一个目录也就是建一个库</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;如果不存在创建：create database if not exists xsphpdb;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;如果存在才删除：drop database xsphpdb if exists xsphpdb;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;库中创建表：</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;create table xsphpdb.users(id int, name char(30), age int, sex char(3));</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;3. 选择一个库做为默认的数据库</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;使用其中的表就不用再加库.表名，直接用表名即可</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;use xsphpdb;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;查看users表结构：desc users;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;删除users表：drop table if exists users;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;创建表：create table </span><span style="font-family: 微软雅黑; font-size: 9pt; font-weight: bold; line-height: 190%">users</span><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%">(id int, name char(30), age int, sex char(3)) if not exists users;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;4. 增删改查</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;insert into users values(1, 'zhangsan', 10, 'man'); //值按顺序插入</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;因为是弱类型，若全部用单引号，会自动去转换成相应的类型</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;若只插入部分字段，出错</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;在全插入和只插入部份，可以先给出字段：可以插入部分，且不用考虑顺序。</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;insert into users(id, name, age) values('10', 'wangwu', '33'); &nbsp; &nbsp; &nbsp; &nbsp;//正确</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;查看数据</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;select * from users;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;更新语句</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;update users set name='lili', age='21' where id='2';</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;删除</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;delete from users where id=2;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%">  &nbsp; &nbsp; &nbsp; &nbsp;帮助的使用</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;使用mysql安装后自带的帮助文档 &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;? 后加关键字</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;? contents &nbsp; &nbsp; &nbsp; &nbsp;//看帮助的内容</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;? data types &nbsp; &nbsp; &nbsp; &nbsp;//看支持的数据类型</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;? int &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//看int类型</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;？ show &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;//看show命令</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;？ create table &nbsp; &nbsp; &nbsp; &nbsp;//看创建表</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;? update</span></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">=================================================Leo added========================================================================</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">作者版本mysql5.0.5</span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">1. MySQL架构</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;客户端连接MySQL DBMS软件(服务器）</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;客户端向服务器（DBMS） 发送SQL语句</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;服务器管理多个数据库</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;库里包含表</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 240%"> &nbsp; &nbsp; &nbsp; &nbsp;表包含：行、列、记录、字段</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">2. MySQL端口：3306</span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;环境，作者安装的集成软件：AppServ，包含了Apache, MySQL, PHP, 项目</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp;命令行下开启和停止mysql（windows)</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;net stop mysql</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 190%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;net start mysql</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;service mysqld start/stop/restart</span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">刚装完数据库，直接mysql命令就可进入，即默认用户没密码，可只留root和localhost</span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">show variables; , 查配置文件中的所有变量</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">show variables like 'port';, 查看某一个</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">show variable like 'time_zone';</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 9pt; line-height: 140%">\s 看状态</span></div>
+<div>----------------------------------------------------------------------------------------------------------<br></div><div>补充：</div><div>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><br></div><script type="text/javascript" language="javascript" src="jquery.js"></script><script type="text/javascript" language="javascript" src="itemlink.js"></script></body></html>

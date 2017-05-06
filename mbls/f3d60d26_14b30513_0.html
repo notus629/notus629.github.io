@@ -1,0 +1,246 @@
+﻿<html><head></head>
+<body><!--StartFragment-->
+
+<p class="MsoNormal"><span style="font-family:宋体;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-fareast-font-family:宋体;mso-fareast-theme-font:
+minor-fareast;mso-hansi-font-family:Calibri;mso-hansi-theme-font:minor-latin">现象：</span><span lang="EN-US"><o:p></o:p></span></p>
+
+<p class="MsoNormal"><span lang="EN-US"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span style="font-family:宋体;mso-ascii-font-family:Calibri;mso-ascii-theme-font:minor-latin;
+mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:
+Calibri;mso-hansi-theme-font:minor-latin">包发向一个不存在的</span><span lang="EN-US">IP</span><span style="font-family:宋体;mso-ascii-font-family:Calibri;mso-ascii-theme-font:minor-latin;
+mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:
+Calibri;mso-hansi-theme-font:minor-latin">，结果有时候捕获的到，有时候捕获不到，本主机</span><span lang="EN-US">IP</span><span style="font-family:宋体;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-fareast-font-family:宋体;mso-fareast-theme-font:
+minor-fareast;mso-hansi-font-family:Calibri;mso-hansi-theme-font:minor-latin">所在网络地址</span><span lang="EN-US">10.8.28.0, </span><span style="font-family:宋体;mso-ascii-font-family:
+Calibri;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:宋体;mso-fareast-theme-font:
+minor-fareast;mso-hansi-font-family:Calibri;mso-hansi-theme-font:minor-latin">当目的地址的网络地址为</span><span lang="EN-US">10.8.28.0</span><span style="font-family:宋体;mso-ascii-font-family:
+Calibri;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:宋体;mso-fareast-theme-font:
+minor-fareast;mso-hansi-font-family:Calibri;mso-hansi-theme-font:minor-latin">时（如</span><span lang="EN-US">10.8.28.222</span><span style="font-family:宋体;mso-ascii-font-family:
+Calibri;mso-ascii-theme-font:minor-latin;mso-fareast-font-family:宋体;mso-fareast-theme-font:
+minor-fareast;mso-hansi-font-family:Calibri;mso-hansi-theme-font:minor-latin">）则捕获不到，为另外一网段的</span><span lang="EN-US">IP</span><span style="font-family:宋体;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-fareast-font-family:宋体;mso-fareast-theme-font:
+minor-fareast;mso-hansi-font-family:Calibri;mso-hansi-theme-font:minor-latin">地址时，则能捕获到。</span><span lang="EN-US"><o:p></o:p></span></p>
+
+<p class="MsoNormal"><span lang="EN-US"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span style="font-family:宋体;mso-ascii-font-family:Calibri;mso-ascii-theme-font:minor-latin;
+mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:
+Calibri;mso-hansi-theme-font:minor-latin">原因在于同一网段的地址，主机不会将包发给路由器，而是要打算直接将帧发送给本地的目的主机，而在本地进行</span><span lang="EN-US">arp</span><span style="font-family:宋体;mso-ascii-font-family:Calibri;
+mso-ascii-theme-font:minor-latin;mso-fareast-font-family:宋体;mso-fareast-theme-font:
+minor-fareast;mso-hansi-font-family:Calibri;mso-hansi-theme-font:minor-latin">查询，发现没有主机响应，就不会发送这个包。</span><span lang="EN-US"><o:p></o:p></span></p>
+
+<p class="MsoNormal"><span lang="EN-US"><span style="mso-tab-count:1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span style="font-family:宋体;mso-ascii-font-family:Calibri;mso-ascii-theme-font:minor-latin;
+mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:
+Calibri;mso-hansi-theme-font:minor-latin">不在同一网段的地址，则会将包先发给路由器，因而能捕获得到。</span><span lang="EN-US"><o:p></o:p></span></p>
+
+<p class="MsoNormal"><span lang="EN-US"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoNormal"><span lang="EN-US" style="mso-bidi-font-size:10.5pt;
+font-family:&quot;Arial&quot;,sans-serif;color:#454545;background:white">IPv6</span><span style="mso-bidi-font-size:10.5pt;font-family:宋体;mso-ascii-font-family:Arial;
+mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:
+Arial;mso-bidi-font-family:Arial;color:#454545;background:white">单播地址的类型可有多种，包括全球单播地址、链路本地地址和站点本地地址等。</span><span lang="EN-US" style="mso-bidi-font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;
+color:#454545;background:white">1. </span><span style="mso-bidi-font-size:10.5pt;
+font-family:宋体;mso-ascii-font-family:Arial;mso-fareast-font-family:宋体;
+mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:Arial;mso-bidi-font-family:
+Arial;color:#454545;background:white">全球单播地址等同于</span><span lang="EN-US" style="mso-bidi-font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;color:#454545;
+background:white">IPv4</span><span style="mso-bidi-font-size:10.5pt;font-family:
+宋体;mso-ascii-font-family:Arial;mso-fareast-font-family:宋体;mso-fareast-theme-font:
+minor-fareast;mso-hansi-font-family:Arial;mso-bidi-font-family:Arial;
+color:#454545;background:white">公网地址，提供给网络服务提供商。这种类型的地址允许路由前缀的聚合，从而限制了全球路由表项的数量。</span><span lang="EN-US" style="mso-bidi-font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;
+color:#454545;background:white">2. </span><span style="mso-bidi-font-size:10.5pt;
+font-family:宋体;mso-ascii-font-family:Arial;mso-fareast-font-family:宋体;
+mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:Arial;mso-bidi-font-family:
+Arial;color:#454545;background:white">链路本地地址用于邻居发现协议和无状态自动配置中链路本地上节点之间的通信。使用链路本地地址作为源或目的地址的数据报文不会被转发到其他链路上。</span><span lang="EN-US" style="mso-bidi-font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;
+color:#454545;background:white">3. </span><span style="mso-bidi-font-size:10.5pt;
+font-family:宋体;mso-ascii-font-family:Arial;mso-fareast-font-family:宋体;
+mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:Arial;mso-bidi-font-family:
+Arial;color:#454545;background:white">站点本地地址与</span><span lang="EN-US" style="mso-bidi-font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;color:#454545;
+background:white">IPv4</span><span style="mso-bidi-font-size:10.5pt;font-family:
+宋体;mso-ascii-font-family:Arial;mso-fareast-font-family:宋体;mso-fareast-theme-font:
+minor-fareast;mso-hansi-font-family:Arial;mso-bidi-font-family:Arial;
+color:#454545;background:white">中的私有地址类似。使用站点本地地址作为源或目的地址的数据报文不会被转发到本站点（相当于一个私有网络）外的其它站点。</span><span style="mso-bidi-font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;color:#454545;
+background:white"> </span><span style="mso-bidi-font-size:10.5pt;font-family:
+宋体;mso-ascii-font-family:Arial;mso-fareast-font-family:宋体;mso-fareast-theme-font:
+minor-fareast;mso-hansi-font-family:Arial;mso-bidi-font-family:Arial;
+color:#454545;background:white">地址类型格式前缀（二进制）</span><span lang="EN-US" style="mso-bidi-font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;color:#454545;
+background:white">IPv6</span><span style="mso-bidi-font-size:10.5pt;font-family:
+宋体;mso-ascii-font-family:Arial;mso-fareast-font-family:宋体;mso-fareast-theme-font:
+minor-fareast;mso-hansi-font-family:Arial;mso-bidi-font-family:Arial;
+color:#454545;background:white">前缀标识单播地址未指定地址</span><span lang="EN-US" style="mso-bidi-font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;color:#454545;
+background:white">00...0 (128 bits)::/128</span><span style="mso-bidi-font-size:
+10.5pt;font-family:宋体;mso-ascii-font-family:Arial;mso-fareast-font-family:宋体;
+mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:Arial;mso-bidi-font-family:
+Arial;color:#454545;background:white">环回地址</span><span lang="EN-US" style="mso-bidi-font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;color:#454545;
+background:white">00...1 (128 bits)::1/128</span><span style="mso-bidi-font-size:
+10.5pt;font-family:宋体;mso-ascii-font-family:Arial;mso-fareast-font-family:宋体;
+mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:Arial;mso-bidi-font-family:
+Arial;color:#454545;background:white">链路本地地址</span><span lang="EN-US" style="mso-bidi-font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;color:#454545;
+background:white">1111111010FE80::/10</span><span style="mso-bidi-font-size:
+10.5pt;font-family:宋体;mso-ascii-font-family:Arial;mso-fareast-font-family:宋体;
+mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:Arial;mso-bidi-font-family:
+Arial;color:#454545;background:white">站点本地地址</span><span lang="EN-US" style="mso-bidi-font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;color:#454545;
+background:white">1111111011FEC0::/10</span><span style="mso-bidi-font-size:
+10.5pt;font-family:宋体;mso-ascii-font-family:Arial;mso-fareast-font-family:宋体;
+mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:Arial;mso-bidi-font-family:
+Arial;color:#454545;background:white">全球单播地址其他形式</span><span lang="EN-US" style="mso-bidi-font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;color:#454545;
+background:white">-</span><span style="mso-bidi-font-size:10.5pt;font-family:
+宋体;mso-ascii-font-family:Arial;mso-fareast-font-family:宋体;mso-fareast-theme-font:
+minor-fareast;mso-hansi-font-family:Arial;mso-bidi-font-family:Arial;
+color:#454545;background:white">组播地址</span><span lang="EN-US" style="mso-bidi-font-size:
+10.5pt;font-family:&quot;Arial&quot;,sans-serif;color:#454545;background:white">11111111FF00::/8</span><span style="mso-bidi-font-size:10.5pt;font-family:宋体;mso-ascii-font-family:Arial;
+mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:
+Arial;mso-bidi-font-family:Arial;color:#454545;background:white">任播地址从单播地址空间中进行分配，使用单播地址的格式</span><span lang="EN-US" style="mso-bidi-font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;
+color:#454545;background:white"><o:p></o:p></span></p>
+
+<p class="MsoNormal"><span lang="EN-US" style="mso-bidi-font-size:10.5pt;
+font-family:&quot;Arial&quot;,sans-serif;color:#454545;background:white"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoNormal"><span style="mso-bidi-font-size:10.5pt;font-family:宋体;
+mso-ascii-font-family:Arial;mso-fareast-font-family:宋体;mso-fareast-theme-font:
+minor-fareast;mso-hansi-font-family:Arial;mso-bidi-font-family:Arial;
+color:#454545;background:white">本地域名服务器和权限域名服务器的区别？</span><span lang="EN-US" style="mso-bidi-font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;color:#454545;
+background:white"><o:p></o:p></span></p>
+
+<p class="MsoNormal"><span lang="EN-US" style="mso-bidi-font-size:10.5pt;
+font-family:&quot;Arial&quot;,sans-serif;color:#454545;background:white">Leo:</span><span style="mso-bidi-font-size:10.5pt;font-family:宋体;mso-ascii-font-family:Arial;
+mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:
+Arial;mso-bidi-font-family:Arial;color:#454545;background:white">只在本地网络中局部使用，不属于</span><span lang="EN-US" style="mso-bidi-font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;
+color:#454545;background:white">DNS</span><span style="mso-bidi-font-size:10.5pt;
+font-family:宋体;mso-ascii-font-family:Arial;mso-fareast-font-family:宋体;
+mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:Arial;mso-bidi-font-family:
+Arial;color:#454545;background:white">域名服务器的层次结构，故与管辖一个区的域</span><span lang="EN-US" style="mso-bidi-font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;
+color:#454545;background:white"><o:p></o:p></span></p>
+
+<p class="MsoNormal"><span style="mso-bidi-font-size:10.5pt;font-family:宋体;
+mso-ascii-font-family:Arial;mso-fareast-font-family:宋体;mso-fareast-theme-font:
+minor-fareast;mso-hansi-font-family:Arial;mso-bidi-font-family:Arial;
+color:#454545;background:white">名服务区不一样。只是处理一些本地的、临时的其它的映射。</span><span lang="EN-US" style="mso-bidi-font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;
+color:#454545;background:white"><o:p></o:p></span></p>
+
+<p class="MsoNormal"><span lang="EN-US" style="mso-bidi-font-size:10.5pt;
+font-family:&quot;Arial&quot;,sans-serif;color:#454545;background:white"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoNormal"><span lang="EN-US" style="mso-bidi-font-size:10.5pt;
+font-family:&quot;Arial&quot;,sans-serif;color:#454545;background:white">FTP</span><span style="mso-bidi-font-size:10.5pt;font-family:宋体;mso-ascii-font-family:Arial;
+mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:
+Arial;mso-bidi-font-family:Arial;color:#454545;background:white">中，从属进程包含了两种，控制连接和数据连接，控制连接使用</span><span lang="EN-US" style="mso-bidi-font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;
+color:#454545;background:white">21</span><span style="mso-bidi-font-size:10.5pt;
+font-family:宋体;mso-ascii-font-family:Arial;mso-fareast-font-family:宋体;
+mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:Arial;mso-bidi-font-family:
+Arial;color:#454545;background:white">，数据连接使用</span><span lang="EN-US" style="mso-bidi-font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;color:#454545;
+background:white">20</span><span style="mso-bidi-font-size:10.5pt;font-family:
+宋体;mso-ascii-font-family:Arial;mso-fareast-font-family:宋体;mso-fareast-theme-font:
+minor-fareast;mso-hansi-font-family:Arial;mso-bidi-font-family:Arial;
+color:#454545;background:white">号。而主进程继续等待其它客户的连接请求也是使用</span><span lang="EN-US" style="mso-bidi-font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;color:#454545;
+background:white">20</span><span style="mso-bidi-font-size:10.5pt;font-family:
+宋体;mso-ascii-font-family:Arial;mso-fareast-font-family:宋体;mso-fareast-theme-font:
+minor-fareast;mso-hansi-font-family:Arial;mso-bidi-font-family:Arial;
+color:#454545;background:white">号端口。那这两个</span><span lang="EN-US" style="mso-bidi-font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;color:#454545;
+background:white">20</span><span style="mso-bidi-font-size:10.5pt;font-family:
+宋体;mso-ascii-font-family:Arial;mso-fareast-font-family:宋体;mso-fareast-theme-font:
+minor-fareast;mso-hansi-font-family:Arial;mso-bidi-font-family:Arial;
+color:#454545;background:white">号端口有冲突和影响吗？</span><span lang="EN-US" style="mso-bidi-font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;color:#454545;
+background:white"><o:p></o:p></span></p>
+
+<p class="MsoNormal"><span lang="EN-US" style="mso-bidi-font-size:10.5pt;
+font-family:&quot;Arial&quot;,sans-serif;color:#454545;background:white">Leo:</span><span style="mso-bidi-font-size:10.5pt;font-family:宋体;mso-ascii-font-family:Arial;
+mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:
+Arial;mso-bidi-font-family:Arial;color:#454545;background:white">没有，一个</span><span lang="EN-US" style="mso-bidi-font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;
+color:#454545;background:white">TCP</span><span style="mso-bidi-font-size:10.5pt;
+font-family:宋体;mso-ascii-font-family:Arial;mso-fareast-font-family:宋体;
+mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:Arial;mso-bidi-font-family:
+Arial;color:#454545;background:white">连接由</span><span lang="EN-US" style="mso-bidi-font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;color:#454545;
+background:white">4</span><span style="mso-bidi-font-size:10.5pt;font-family:
+宋体;mso-ascii-font-family:Arial;mso-fareast-font-family:宋体;mso-fareast-theme-font:
+minor-fareast;mso-hansi-font-family:Arial;mso-bidi-font-family:Arial;
+color:#454545;background:white">个部分双方</span><span lang="EN-US" style="mso-bidi-font-size:
+10.5pt;font-family:&quot;Arial&quot;,sans-serif;color:#454545;background:white">IP+</span><span style="mso-bidi-font-size:10.5pt;font-family:宋体;mso-ascii-font-family:Arial;
+mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:
+Arial;mso-bidi-font-family:Arial;color:#454545;background:white">双方端口号，而主进程打开并等待连接只是准备好资源监听</span><span lang="EN-US" style="mso-bidi-font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;
+color:#454545;background:white">20</span><span style="mso-bidi-font-size:10.5pt;
+font-family:宋体;mso-ascii-font-family:Arial;mso-fareast-font-family:宋体;
+mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:Arial;mso-bidi-font-family:
+Arial;color:#454545;background:white">号端口，而控制连接所传送的这个</span><span lang="EN-US" style="mso-bidi-font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;color:#454545;
+background:white">20</span><span style="mso-bidi-font-size:10.5pt;font-family:
+宋体;mso-ascii-font-family:Arial;mso-fareast-font-family:宋体;mso-fareast-theme-font:
+minor-fareast;mso-hansi-font-family:Arial;mso-bidi-font-family:Arial;
+color:#454545;background:white">号端口已经建立了连接，即使主进程收到</span><span lang="EN-US" style="mso-bidi-font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;color:#454545;
+background:white">20</span><span style="mso-bidi-font-size:10.5pt;font-family:
+宋体;mso-ascii-font-family:Arial;mso-fareast-font-family:宋体;mso-fareast-theme-font:
+minor-fareast;mso-hansi-font-family:Arial;mso-bidi-font-family:Arial;
+color:#454545;background:white">号端口的数据，他也能够区分是谁的，尽管端口号</span><span lang="EN-US" style="mso-bidi-font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;color:#454545;
+background:white">+</span><span style="mso-bidi-font-size:10.5pt;font-family:
+宋体;mso-ascii-font-family:Arial;mso-fareast-font-family:宋体;mso-fareast-theme-font:
+minor-fareast;mso-hansi-font-family:Arial;mso-bidi-font-family:Arial;
+color:#454545;background:white">目的</span><span lang="EN-US" style="mso-bidi-font-size:
+10.5pt;font-family:&quot;Arial&quot;,sans-serif;color:#454545;background:white">IP</span><span style="mso-bidi-font-size:10.5pt;font-family:宋体;mso-ascii-font-family:Arial;
+mso-fareast-font-family:宋体;mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:
+Arial;mso-bidi-font-family:Arial;color:#454545;background:white">定位服务器的进程，但现在似乎只有根据源</span><span lang="EN-US" style="mso-bidi-font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;
+color:#454545;background:white">IP</span><span style="mso-bidi-font-size:10.5pt;
+font-family:宋体;mso-ascii-font-family:Arial;mso-fareast-font-family:宋体;
+mso-fareast-theme-font:minor-fareast;mso-hansi-font-family:Arial;mso-bidi-font-family:
+Arial;color:#454545;background:white">来区分是把数据交给主进程还是从属进程了。</span><span lang="EN-US" style="mso-bidi-font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;
+color:#454545;background:white"><o:p></o:p></span></p>
+
+<p class="MsoNormal"><span lang="EN-US" style="mso-bidi-font-size:10.5pt;
+font-family:&quot;Arial&quot;,sans-serif;color:#454545;background:white"><o:p>&nbsp;</o:p></span></p>
+
+<p class="MsoListParagraph" style="text-indent: 0px;margin-left: 60pt; "><span style="color: rgb(69, 69, 69); background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: white; background-position: initial initial; background-repeat: initial initial; "><font class="Apple-style-span" face="Arial, sans-serif"><br></font></span></p><p class="MsoListParagraph" style="margin-left:60.0pt;text-indent:-18.0pt;
+mso-char-indent-count:0;mso-list:l0 level1 lfo2"><span style="mso-bidi-font-size:10.5pt;font-family:
+宋体;mso-ascii-font-family:Arial;mso-fareast-font-family:宋体;mso-fareast-theme-font:
+minor-fareast;mso-hansi-font-family:Arial;mso-bidi-font-family:Arial;
+color:#454545;background:white"><br></span></p><p class="MsoListParagraph" style="margin-left:60.0pt;text-indent:-18.0pt;
+mso-char-indent-count:0;mso-list:l0 level1 lfo2"><span style="mso-bidi-font-size:10.5pt;font-family:
+宋体;mso-ascii-font-family:Arial;mso-fareast-font-family:宋体;mso-fareast-theme-font:
+minor-fareast;mso-hansi-font-family:Arial;mso-bidi-font-family:Arial;
+color:#454545;background:white"><br></span></p><p class="MsoListParagraph" style="margin-left:60.0pt;text-indent:-18.0pt;
+mso-char-indent-count:0;mso-list:l0 level1 lfo2"><span style="mso-bidi-font-size:10.5pt;font-family:
+宋体;mso-ascii-font-family:Arial;mso-fareast-font-family:宋体;mso-fareast-theme-font:
+minor-fareast;mso-hansi-font-family:Arial;mso-bidi-font-family:Arial;
+color:#454545;background:white"><br></span></p><p class="MsoListParagraph" style="margin-left:60.0pt;text-indent:-18.0pt;
+mso-char-indent-count:0;mso-list:l0 level1 lfo2"><span style="mso-bidi-font-size:10.5pt;font-family:
+宋体;mso-ascii-font-family:Arial;mso-fareast-font-family:宋体;mso-fareast-theme-font:
+minor-fareast;mso-hansi-font-family:Arial;mso-bidi-font-family:Arial;
+color:#454545;background:white"><br></span></p><p class="MsoListParagraph" style="margin-left:60.0pt;text-indent:-18.0pt;
+mso-char-indent-count:0;mso-list:l0 level1 lfo2"><span style="mso-bidi-font-size:10.5pt;font-family:
+宋体;mso-ascii-font-family:Arial;mso-fareast-font-family:宋体;mso-fareast-theme-font:
+minor-fareast;mso-hansi-font-family:Arial;mso-bidi-font-family:Arial;
+color:#454545;background:white"><br></span></p><p class="MsoListParagraph" style="margin-left:60.0pt;text-indent:-18.0pt;
+mso-char-indent-count:0;mso-list:l0 level1 lfo2"><span style="mso-bidi-font-size:10.5pt;font-family:
+宋体;mso-ascii-font-family:Arial;mso-fareast-font-family:宋体;mso-fareast-theme-font:
+minor-fareast;mso-hansi-font-family:Arial;mso-bidi-font-family:Arial;
+color:#454545;background:white"><br></span></p><p class="MsoListParagraph" style="margin-left:60.0pt;text-indent:-18.0pt;
+mso-char-indent-count:0;mso-list:l0 level1 lfo2"><span style="mso-bidi-font-size:10.5pt;font-family:
+宋体;mso-ascii-font-family:Arial;mso-fareast-font-family:宋体;mso-fareast-theme-font:
+minor-fareast;mso-hansi-font-family:Arial;mso-bidi-font-family:Arial;
+color:#454545;background:white"><br></span></p><p class="MsoListParagraph" style="margin-left:60.0pt;text-indent:-18.0pt;
+mso-char-indent-count:0;mso-list:l0 level1 lfo2"><span style="mso-bidi-font-size:10.5pt;font-family:
+宋体;mso-ascii-font-family:Arial;mso-fareast-font-family:宋体;mso-fareast-theme-font:
+minor-fareast;mso-hansi-font-family:Arial;mso-bidi-font-family:Arial;
+color:#454545;background:white"><br></span></p><p class="MsoListParagraph" style="margin-left:60.0pt;text-indent:-18.0pt;
+mso-char-indent-count:0;mso-list:l0 level1 lfo2"><span style="mso-bidi-font-size:10.5pt;font-family:
+宋体;mso-ascii-font-family:Arial;mso-fareast-font-family:宋体;mso-fareast-theme-font:
+minor-fareast;mso-hansi-font-family:Arial;mso-bidi-font-family:Arial;
+color:#454545;background:white"><br></span></p><p class="MsoListParagraph" style="margin-left:60.0pt;text-indent:-18.0pt;
+mso-char-indent-count:0;mso-list:l0 level1 lfo2"><span style="mso-bidi-font-size:10.5pt;font-family:
+宋体;mso-ascii-font-family:Arial;mso-fareast-font-family:宋体;mso-fareast-theme-font:
+minor-fareast;mso-hansi-font-family:Arial;mso-bidi-font-family:Arial;
+color:#454545;background:white"><br></span></p><p class="MsoListParagraph" style="margin-left:60.0pt;text-indent:-18.0pt;
+mso-char-indent-count:0;mso-list:l0 level1 lfo2"><span style="mso-bidi-font-size:10.5pt;font-family:
+宋体;mso-ascii-font-family:Arial;mso-fareast-font-family:宋体;mso-fareast-theme-font:
+minor-fareast;mso-hansi-font-family:Arial;mso-bidi-font-family:Arial;
+color:#454545;background:white"><br></span></p><p class="MsoListParagraph" style="margin-left:60.0pt;text-indent:-18.0pt;
+mso-char-indent-count:0;mso-list:l0 level1 lfo2"><span style="mso-bidi-font-size:10.5pt;font-family:
+宋体;mso-ascii-font-family:Arial;mso-fareast-font-family:宋体;mso-fareast-theme-font:
+minor-fareast;mso-hansi-font-family:Arial;mso-bidi-font-family:Arial;
+color:#454545;background:white"><br></span></p><p class="MsoListParagraph" style="margin-left:60.0pt;text-indent:-18.0pt;
+mso-char-indent-count:0;mso-list:l0 level1 lfo2"><span style="mso-bidi-font-size:10.5pt;font-family:
+宋体;mso-ascii-font-family:Arial;mso-fareast-font-family:宋体;mso-fareast-theme-font:
+minor-fareast;mso-hansi-font-family:Arial;mso-bidi-font-family:Arial;
+color:#454545;background:white"><br></span></p><p class="MsoListParagraph" style="margin-left:60.0pt;text-indent:-18.0pt;
+mso-char-indent-count:0;mso-list:l0 level1 lfo2"><span style="mso-bidi-font-size:10.5pt;font-family:
+宋体;mso-ascii-font-family:Arial;mso-fareast-font-family:宋体;mso-fareast-theme-font:
+minor-fareast;mso-hansi-font-family:Arial;mso-bidi-font-family:Arial;
+color:#454545;background:white"><br></span></p>
+
+<!--EndFragment-->
+
+<script type="text/javascript" language="javascript" src="jquery.js"></script><script type="text/javascript" language="javascript" src="itemlink.js"></script></body></html>

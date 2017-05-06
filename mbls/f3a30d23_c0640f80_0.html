@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>/*<![CDATA[*/
+
+table{border: 1px solid gray;}
+td{border: 1px dotted gray;}
+p{margin: 3px 0 3px 0; padding: 0;}
+#ID_Footer{font-size: small; font-style: italic; text-align: right; margin-top: 4em; padding-top: 4px; border-top: 2px solid gray;}
+
+/*]]>*/</style><title>数字证书及CA扫盲</title></head><body>
+<div><br></div>
+<div style="text-align: center"><span style="font-family: 微软雅黑; font-size: 15pt; line-height: 140%">数字证书及CA扫盲</span></div>
+<div style="text-align: center"><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%">Leo, 2016-8-29</span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp;数字证书</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;即 Digital Certificate 或 public key certificate</span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; font-weight: bold; line-height: 140%"> &nbsp; &nbsp;CA</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;即Certificate Authority，证书授权中心，负责管理和签发证书的第三方机构</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;CA证书，即由CA颁发的证书。</span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp;</span><span style="font-family: 微软雅黑; font-size: 12pt; font-weight: bold; line-height: 140%">证书间信任关系</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;用一个证书来证明另一个证书是真实可信的</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; </span><span style="font-family: 微软雅黑; font-size: 12pt; font-weight: bold; line-height: 140%"> 证书信任链</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;即嵌套的证书信任关系，信任链头上的一个证书，则后续证书都可信任</span></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> </span><span style="font-family: 微软雅黑; font-size: 12pt; font-weight: bold; line-height: 140%"> &nbsp; 根证书 root certificate</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;假设C证书信息A和B，A信任A1和A2，B信任B1和B2，构成如下树形关系</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;处于最顶上的树根位置的证书即根证书</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;除了根证书，其它证书都要依靠上一级的证书来证明自己，而</span><span style="font-family: 微软雅黑; font-size: 12pt; font-weight: bold; line-height: 140%">根证书自己证明自己是可靠的</span><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%">。</span></div>
+<div><br></div>
+<div style="text-align: center"><img src="img_4132.jpg" style="line-height: 140%"></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; </span><span style="font-family: 微软雅黑; font-size: 12pt; font-weight: bold; line-height: 140%"> 证书的作用</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;验证网站是否可信（针对HTTPS），用证书来确保网站的真实性。</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;利用HTTPS访问网站时，浏览器会验证站点上的CA证书</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*证书被某个根证书信任、证书上绑定的域名和该网站的域名一致、证书没有过期</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*若没问题则直接打开，否则浏览器会弹出警告如下图：</span></div>
+<div style="text-align: center"><img src="img_7150.jpg" style="line-height: 140%"></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; &nbsp; &nbsp; &nbsp;证书还可以验证某文件是否可信，是否被篡改，目前大多数知名的公司（或组织机构），其发布的可执行文件（比如软件安装包、驱动程序、安全补丁），都带有数字签名。</span></div>
+<div><br></div>
+<div style="text-align: center"><img src="img_23018.jpg" style="line-height: 140%"><img src="img_5632.jpg" style="line-height: 140%"></div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%"> &nbsp; </span><span style="font-family: 微软雅黑; font-size: 12pt; font-weight: bold; line-height: 140%"> [Ref 1] </span><span style="font-family: 微软雅黑; font-size: 12pt; line-height: 140%">数字证书及CA的扫盲介绍 (</span><a href="http://kb.cnblogs.com/page/194742/" style="font-family: 微软雅黑; font-size: 12pt; text-decoration: underline; color: #0000ff">外链</a><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%">)</span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><span style="font-family: 微软雅黑; font-size: 12pt; color: #000000; line-height: 140%"><br></span></div><div><font class="Apple-style-span" face="微软雅黑"><span class="Apple-style-span" style="line-height: 22px;"><br></span></font></div>
+<ul id="ID_PictFileNames" style="display: none">
+<li fn="img_4132.jpg"></li>
+<li fn="img_7150.jpg"></li>
+<li fn="img_23018.jpg"></li>
+<li fn="img_5632.jpg"></li></ul><script type="text/javascript" language="javascript" src="jquery.js"></script><script type="text/javascript" language="javascript" src="itemlink.js"></script></body></html>

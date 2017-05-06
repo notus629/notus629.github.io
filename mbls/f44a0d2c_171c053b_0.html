@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>/*<![CDATA[*/
+
+table{border: 1px solid gray;}
+td{border: 1px dotted gray;}
+p{margin: 3px 0 3px 0; padding: 0;}
+#ID_Footer{font-size: small; font-style: italic; text-align: right; margin-top: 4em; padding-top: 4px; border-top: 2px solid gray;}
+
+/*]]>*/</style><title>重难点</title></head><body>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><span style="line-height: 140%; "><b><font class="Apple-style-span" face="Consolas">重难点：</font></b></span></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><span style="line-height: 190%; "><b><font class="Apple-style-span" face="Consolas">1. __set() and __get() method:</font></b></span></div>
+<div><font class="Apple-style-span" face="Consolas"><span style="line-height: 140%; "> &nbsp; &nbsp; &nbsp; &nbsp;__set() is run when writing data to </span><span style="color: rgb(255, 0, 0); line-height: 140%; ">inaccessible </span><span style="color: rgb(0, 0, 0); line-height: 140%; ">properties.</span></font></div>
+<div><font class="Apple-style-span" face="Consolas"><span style="line-height: 240%; "> &nbsp; &nbsp; &nbsp; &nbsp;__get() is utilized for reading data from </span><span style="color: rgb(255, 0, 0); line-height: 240%; ">inaccessible </span><span style="color: rgb(0, 0, 0); line-height: 240%; ">properties.</span></font></div>
+<div><span style="line-height: 140%; "><font class="Apple-style-span" face="Consolas"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;__set()和__get()仅针对不可访问（即private）的属性才起作用，但这些属性在定义了__set()和__get()之后，变的在外部可以访问（读和设置）。</font></span></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><span style="line-height: 190%; "><b><font class="Apple-style-span" face="Consolas">2. &nbsp;类中属性访问时的$符号.</font></b></span></div>
+<div><span style="line-height: 140%; "><font class="Apple-style-span" face="Consolas"> &nbsp; &nbsp; &nbsp; &nbsp;访问时直接$classname-&gt;var即可。</font></span></div>
+<div><span style="line-height: 140%; "><font class="Apple-style-span" face="Consolas"> &nbsp; &nbsp; &nbsp; &nbsp;定义时则为$var</font></span></div>
+<div><span style="line-height: 140%; "><font class="Apple-style-span" face="Consolas"> &nbsp; &nbsp; &nbsp; &nbsp; 在内部判断其名字时，也是与"var"比较</font></span></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><span style="line-height: 190%; "><b><font class="Apple-style-span" face="Consolas">3. &nbsp;$_SERVER['PHP_SELF'] 与 $_SERVER['HTTP_HOST']</font></b></span></div>
+<div><font class="Apple-style-span" face="Consolas"><span style="line-height: 190%; "> &nbsp; &nbsp; &nbsp; &nbsp;</span><span style="font-weight: bold; line-height: 190%; ">$_SERVER['PHP_SELF'] </span><span style="line-height: 190%; ">- 表示当前 php 文件相对于网站根目录的位置地址，如地址</span><a href="http://www.5idev.com/php/" style="text-decoration: underline; color: rgb(0, 0, 255); ">http://www.5idev.com/php/</a><span style="color: rgb(0, 0, 0); line-height: 190%; ">，可得到/php/index.php</span></font></div>
+<div><font class="Apple-style-span" face="Consolas"><span style="font-weight: bold; line-height: 190%; "> &nbsp; &nbsp; &nbsp; &nbsp;$_SERVER['HTTP_HOST']</span><span style="line-height: 190%; ">-- 主机域名？ </span></font></div>
+<div><font class="Apple-style-span" face="Consolas"><span style="line-height: 140%; "> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$url = "</span><a href="http://" style="text-decoration: underline; color: rgb(0, 0, 255); ">http://".$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF</a><span style="color: rgb(0, 0, 0); line-height: 140%; ">']; 得到：</span><a href="http://www.5idev.com/php/index.php" style="text-decoration: underline; color: rgb(0, 0, 255); ">http://www.5idev.com/php/index.php</a></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><span style="font-weight: bold; line-height: 190%; "><font class="Apple-style-span" face="Consolas">4. 花括号的作用</font></span></div>
+<div><span style="line-height: 140%; "><font class="Apple-style-span" face="Consolas"> &nbsp; &nbsp; &nbsp; &nbsp;一、不管什么程序，function name(){}, for(){}, ….太多了，不说也知道做什么用了。 </font></span></div>
+<div><span style="line-height: 140%; "><font class="Apple-style-span" face="Consolas"> &nbsp; &nbsp; &nbsp; &nbsp;二、$str{4}在字符串的变量的后面跟上{}刚大括号和中括号一样都是把某个字符串变量当成数组处理。 </font></span></div>
+<div><span style="line-height: 140%; "><font class="Apple-style-span" face="Consolas"> &nbsp; &nbsp; &nbsp; &nbsp;三、{$val}这时候大括号起的作用就是，告诉PHP，括起来的要当成变量处理。</font></span></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><b><font class="Apple-style-span" face="Consolas">5. PHP换行时机</font></b></div><div><font class="Apple-style-span" face="Consolas">&nbsp; &nbsp; &nbsp; &nbsp; 1. 字符串里面可以换行</font></div>
+<div><font class="Apple-style-span" face="Consolas">&nbsp; &nbsp; &nbsp; &nbsp; 2. 字符连接符处可以换行</font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><font class="Apple-style-span" face="Consolas"><br></font></div>
+<div><br></div><script type="text/javascript" language="javascript" src="jquery.js"></script><script type="text/javascript" language="javascript" src="itemlink.js"></script></body></html>

@@ -1,0 +1,66 @@
+﻿<html><head></head>
+<body><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas">bookorama.sql----创建Book-O-Rama数据库表的SQL脚本</font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><blockquote class="webkit-indent-blockquote" style="margin: 0 0 0 40px; border: none; padding: 0px;"><div><table style="color: rgb(51, 51, 51); font-size: medium; font-style: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; "><tbody><tr><td><pre style="margin: 0px; line-height: 16.25px;"><font class="Apple-style-span" face="Consolas"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33</font></pre></td><td><pre style="margin: 0px; line-height: 16.25px;"><font class="Apple-style-span" face="Consolas"><span style="color: rgb(0, 0, 255);">create</span> <span style="color: rgb(0, 0, 255);">table</span> customers
+( customerid <span style="color: rgb(43, 145, 175);">int</span> <span style="color: rgb(0, 0, 255);">unsigned</span> <span style="color: rgb(0, 0, 255);">not</span> null <span style="color: rgb(0, 0, 255);">auto_increment</span> <span style="color: rgb(0, 0, 255);">primary</span> <span style="color: rgb(0, 0, 255);">key</span>,
+  name <span style="color: rgb(43, 145, 175);">char</span>(50) <span style="color: rgb(0, 0, 255);">not</span> null,
+  address <span style="color: rgb(43, 145, 175);">char</span>(100) <span style="color: rgb(0, 0, 255);">not</span> null,
+  city <span style="color: rgb(43, 145, 175);">char</span>(30) <span style="color: rgb(0, 0, 255);">not</span> null
+);
+
+<span style="color: rgb(0, 0, 255);">create</span> <span style="color: rgb(0, 0, 255);">table</span> orders
+( orderid <span style="color: rgb(43, 145, 175);">int</span> <span style="color: rgb(0, 0, 255);">unsigned</span> <span style="color: rgb(0, 0, 255);">not</span> null <span style="color: rgb(0, 0, 255);">auto_increment</span> <span style="color: rgb(0, 0, 255);">primary</span> <span style="color: rgb(0, 0, 255);">key</span>,
+  customerid <span style="color: rgb(43, 145, 175);">int</span> <span style="color: rgb(0, 0, 255);">unsigned</span> <span style="color: rgb(0, 0, 255);">not</span> null,
+  amount <span style="color: rgb(43, 145, 175);">float</span>(6,2),
+  <span style="color: rgb(43, 145, 175);">date</span> <span style="color: rgb(43, 145, 175);">date</span> <span style="color: rgb(0, 0, 255);">not</span> null
+);
+
+<span style="color: rgb(0, 0, 255);">create</span> <span style="color: rgb(0, 0, 255);">table</span> books
+( isbn <span style="color: rgb(43, 145, 175);">char</span>(13) <span style="color: rgb(0, 0, 255);">not</span> null <span style="color: rgb(0, 0, 255);">primary</span> <span style="color: rgb(0, 0, 255);">key</span>,
+  author <span style="color: rgb(43, 145, 175);">char</span>(50),
+  title <span style="color: rgb(43, 145, 175);">char</span>(100),
+  price <span style="color: rgb(43, 145, 175);">float</span>(4,2)
+);
+
+<span style="color: rgb(0, 0, 255);">create</span> <span style="color: rgb(0, 0, 255);">table</span> order_items
+( orderid <span style="color: rgb(43, 145, 175);">int</span> <span style="color: rgb(0, 0, 255);">unsigned</span> <span style="color: rgb(0, 0, 255);">not</span> null,
+  isbn <span style="color: rgb(43, 145, 175);">char</span>(13) <span style="color: rgb(0, 0, 255);">not</span> null,
+  quantity <span style="color: rgb(43, 145, 175);">tinyint</span> <span style="color: rgb(0, 0, 255);">unsigned</span>,
+  <span style="color: rgb(0, 0, 255);">primary</span> <span style="color: rgb(0, 0, 255);">key</span> (orderid, isbn)
+);
+
+<span style="color: rgb(0, 0, 255);">create</span> <span style="color: rgb(0, 0, 255);">table</span> book_reviews
+(
+  isbn <span style="color: rgb(43, 145, 175);">char</span>(13) <span style="color: rgb(0, 0, 255);">not</span> null <span style="color: rgb(0, 0, 255);">primary</span> <span style="color: rgb(0, 0, 255);">key</span>,
+  review <span style="color: rgb(43, 145, 175);">text</span>
+);</font></pre></td></tr></tbody></table></div></blockquote><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><b>References</b></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas">&nbsp; &nbsp; [1] 《PHP和MySQL Web开发》第4版 p173</font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><font class="Apple-style-span" face="Consolas"><br></font></div><div><br></div><script type="text/javascript" language="javascript" src="jquery.js"></script><script type="text/javascript" language="javascript" src="itemlink.js"></script></body></html>
