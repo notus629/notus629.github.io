@@ -2,7 +2,8 @@
 body, p, b, dl, dd, table, td, th, input, img, form, div, ul, li {
 	margin: 0;
 	padding: 0;
-	background: url('images/bg.jpg') fixed;
+	background: url('images/2.jpg') fixed no-repeat;
+	background-size: contain;
 }
 :focus {
 	outline: 0;
