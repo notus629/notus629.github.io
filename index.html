@@ -2,23 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>栅格系统</title>
+    <title>Notus' notes</title>
     <!--响应式，约束缩放-->
     <!-- viewport: 视口，屏幕宽度强制采用设备的宽度，初始比例1，user-scalable:禁止两个手指缩放 -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <!--通知IE采用其支持的最新模式-->
     <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
-    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
-    <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="lib/bootstrap.min.css">
+    <script type="text/javascript" src="lib/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="lib/bootstrap.min.js"></script>
+    <style type="text/css">
+        .mytitle {
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+        div{
+            padding-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
   <div class="container">
+    <div class="mytitle text-info text-center"><h1>My notes</h1></div>
     <div>
-        <a class="btn btn-warning btn-block" href="mbls/index.html"></a>
+        <a class="btn btn-warning btn-block btn-lg" href="mbls">mbls</a>
     </div>
     <div>
-        <a href="btn btn-info btn-block" href="fdls/index.html"></a>
+        <a class="btn btn-info btn-block btn-lg" href="fdls">fdls</a>
     </div>
   </div>
 </body>
